@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styles-home.css' %} ">
+</head>
+<body>
+    <div class="right_row">
+        <div class="row border-radius">
+            <center><div class="settings shadow">
+                <div class="settings_title">
+                    
+                </div>
+    
+                <div class="settings_content">
+                    <H3>Registrar Estudiantes</H3>
+                    {{user}}
+                    <form  method="POST">{% csrf_token %}
+                        <div class="pi-input pi-input-lg">
+                            <h6>Nombre</h6>
+                            <input type="text" placeholder="Nombre ..." required value=""/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Apellido</h6>
+                            <input type="text" placeholder="Apellido ... " value="" required name="apellido" />
+                        </div>
+                       
+                        <div class="pi-input pi-input-lg">
+                            <h6>Fecha de nacimiento</h6>
+                            <input type="date" value="1985-01-08" required name="cumpleaño"/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Telefono</h6>
+                            <input type="text" placeholder="escribe tu numero" required name="telefono" />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Pais</h6>
+                            <input type="text" placeholder="escripe tu pais" required Name="pais"  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Provincia</h6>
+                            <input type="text" placeholder="escribe tu provincia" required name="provincia" />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Municipio</h6>
+                            <input type="text" placeholder="escribe tu municipio" required name="municipio" />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Direccion</h6>
+                            <input type="text" placeholder="escribe tu municipio" required name="direcion" />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Cedula</h6>
+                            <input type="text" placeholder="escribe tu municipio" required name="cedula"  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Matricula</h6>
+                            <input type="text" placeholder="Matricula ..." required name="matricula" />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Gmail</h6>
+                            <input type="text" placeholder="Gmail ..."name="gmail"  required  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h6>Password</h6>
+                            <input type="text" placeholder="Password"  name="Password" required />
+                        </div>
+                        <div>
+                            <h5>Carreras</h5>
+                            <p style="height: 20%;" >{{form.nombre}}</p>
+                        </div>
+                        <button style="background-color: #050c86 ;" type="submit">Save</button>
+                    </form>
+            </div></center>
+    
+        </div>
+    </div>
+    
+</body>
+</html>

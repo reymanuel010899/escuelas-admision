@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="right_row">
+    <div class="row border-radius">
+        <center><div class="settings shadow">
+            <div class="settings_title">
+                
+            </div>
+              <H3>CARRERA</H3>
+                <h2 style="margin-left: 10px;" >{{escuela.carrera}}</h2>
+            <div class="settings_content">
+                
+              
+                    <div class="pi-input pi-input-lg">
+                        <h6>Nombre</h6>
+                        <input type="text" value=" {{user.nombre}}" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Apellido</h6>
+                        <input type="text" value="{{user.apellido}}" name="apellido" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>link red social</h6>
+                        <input type="text" value="https://www.instagram.com/reymanuelferreras/" name="webside" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Fecha de nacimiento</h6>
+                        <input type="date" value="1985-01-08" name="cumpleaño" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Telefono</h6>
+                        <input type="text" placeholder="escribe tu numero" name="telefono" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Pais</h6>
+                        <input type="text" placeholder="escripe tu pais" Name="pais" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Provincia</h6>
+                        <input type="text" placeholder="escribe tu provincia" name="provincia" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Municipio</h6>
+                        <input type="text" placeholder="escribe tu municipio" name="municipio" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Direccion</h6>
+                        <input type="text" placeholder="escribe tu municipio" name="direcion" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Cedula</h6>
+                        <input type="text" placeholder="escribe tu municipio" name="cedula" readonly />
+                    </div>
+        </div></center>
+    </div>
+</div>
+  
+{% endblock content %}

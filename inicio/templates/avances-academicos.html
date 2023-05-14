@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+  <h2 style="text-align: center;">{{escuela.carrera}} </h2>
+  <table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%;border-collapse:collapse;">
+    <tbody>
+    <tr style="background-color: rgb(1, 1, 51); color: antiquewhite;">
+        <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Codigo Asignatura</th><th class="centro" scope="col">Asignatura</th><th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Calificación</th>
+    </tr>
+ 
+    {% for materia in carrera  %}
+ 
+        <tr  style="background-color:rgb(230, 230, 255);">
+            <td  class="centro"  align="center">{{materia.semestre}} </td>
+            <td> {{materia.codigo}} </td>
+            <td>{{materia.nombre}} </td>{% for b in materia.nota_reverce.all %}{% if b.estudiate.user == user %}<td> {% if b.materia.profesor %} {{b.materia.profesor}} {% else %}  {% endif %} </td>{% if b.nota >= 70 %}<td style="background-color: rgb(1, 1, 51); color: aliceblue;" > {{b}} </td> {% else %}  <td style="background-color: rgb(138, 7, 7); color: aliceblue;">{{b}}</td> {% endif %} {% endif %}{% endfor %} </td>
+        </tr>
+    
+    
+ 
+    
+    {% endfor %}
+
+ 
+
+       
+</tbody></table>
+{% endblock content %}
+

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Historial Academico </h2>
+<table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%;border-collapse:collapse;">
+    <tbody>
+        <td  class="headtabl1" align="left" colspan="9" style="background-color:AliceBlue;"> <span ><h4> {% if promedio %} Promedio:   {{promedio|truncatechars:6}}{% else %} {% endif %} </h4></span>   <span><h4></h4>
+       
+        <tr  style="background-color: rgb(3, 16, 50); color: aliceblue;">
+            <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Código Asignatura</th><th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Asignatura</th><th class="centro" scope="col">Calificacion Final</th><th class="centro" scope="col">Calificación</th>
+        </tr>
+        {% for mate in materia  %}
+        <tr style="background-color:rgb(230, 230, 255)" >
+            <td class="centro" align="center">{{mate.materia.semestre}} </td><td>{{mate.materia.codigo}} </td><td>{{mate.materia.profesor}} </td> <td>{{mate.materia.nombre}} </td><td>{{mate.nota}} </td><td>{% if  mate.nota >= 70  and  mate.nota < 80 %} C
+        {% elif mate.nota < 70 %}
+                X
+        {% elif  mate.nota >= 80 and  mate.nota < 90 %}
+        B
+        {% elif  mate.nota >= 90 and  mate.nota <= 100 %}
+        A
+        </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+     
+     
+       </h4></span> </td>
+</tbody>
+</table>
+{% endblock content %}

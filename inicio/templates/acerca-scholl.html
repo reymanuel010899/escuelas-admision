@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if escuela.escuela.portada %}
+<img style="width: 80%; margin-left: 10%; height: 50%; border-radius: 10PX;" src= "{{escuela.escuela.portada.url}} " alt="">
+<div style="margin-left: 10%;">
+  <span> <span style="color: blue;"> DIRECTOR:</span> {{escuela.escuela.director.user.nombre }}  {{escuela.escuela.director.user.apellido }}</span>
+</div>
+
+<div class="container" style="margin-top: 5%;">
+  <h5>{{escuela.escuela.descripcion|title}}</h5>
+</div>
+{% endif %}
+  
+ 
+{% endblock content %}

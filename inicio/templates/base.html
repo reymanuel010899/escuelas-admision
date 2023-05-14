@@ -1,0 +1,77 @@
+{% load static %} 
+<!DOCTYPE html>
+ <html lang="en">
+     <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+         <title>Document</title> <link rel="stylesheet" href=" {% static 'css/styles-home.css' %}">
+         </head>
+          <body> <div id="wrapper"> 
+            <div class="wrapper">
+             <!-- Sidebar  --> 
+             <nav id="sidebar"> 
+                <div class="sidebar-header">
+                    <h5 style="text-align: center;">{{escuela.user.nombre}} </h5>
+                     <h5 style="text-align: center;">(rango)</h5>
+                        <img id="portada" style="border-radius: 15px; max-width: 80PX; margin-left: 25%;  max-height:10%; "  src="{{user.avatar.url}} "/>
+                     <h5 style="text-align: center;">{{user.username}}</h5>
+                     </div> 
+                    <ul class="list-unstyled components">
+                        {% if user.is_profesor %}
+                        <li><a href="{% url 'inicio_app:ultima-secciones'  %} ">Registrar nota</a> </li> <li> 
+                        <li> <a href="{% url 'inicio_app:inicio' %} ">Informacion Personal</a> </li> <li> 
+                        <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank">Pensum Academico</a></li><li></li>
+                        <li> <a href="{% url 'inicio_app:correo-cemtro' %} ">Acerca Escuela</a></li><li> 
+                        <li> <a href="{% url 'users_app:cerrar-seccion'  %} ">Salir</a></li><li> 
+                        {% else %}
+                            <li> <a href="{% url 'inicio_app:inicio' %} ">Informacion Personal</a> </li> <li> 
+                            <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank">Pensum Academico</a></li><li>
+                            <li> <a href="{% url 'inicio_app:avances-academicos' %} ">Avances Academicos</a></li><li> 
+                                <li> <a href="{% url 'inicio_app:notas-alunno' %} ">Historial Academico</a></li><li> 
+                            <li> <a href="{% url 'inicio_app:correo-cemtro' %} ">Acerca Escuela</a></li><li> 
+                            <li> <a href="{% url 'users_app:cerrar-seccion'  %} ">Salir</a></li><li> 
+                        {% endif %}
+
+                  
+                    </ul>
+                </nav>
+                
+                <!-- Page Content  -->
+                 <div id="content"  >
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" background-color: rgb(255, 255, 255); border-radius: 5px;">
+                     <div class="container-fluid">
+                        <span ><h2 style="">{{escuela.escuela.nombre|title}}</h2></span>
+                        <button style="background-color: #c7c2ed;" type="button" id="sidebarCollapse" class="btn btn-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                        </button> 
+                     
+                          
+                   
+             
+                    </div> 
+                </nav> 
+                             
+                             
+                             
+                             {% block content %}
+                             
+                             
+                             {% endblock content %} 
+                            
+                            
+                            
+                        
+                        </div> 
+     </body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+        <Script>
+         $(document).ready(function () { $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); }); }); 
+        </Script>                
+        </html>
