@@ -41,13 +41,12 @@ def acerca_scholl(request):
 
 @login_required(login_url='users_app:escuelas')
 def notas_del_alunno(request):
-   if request.user.is_profesor:
-      user = request.user
-      estudiante = EstudiantesModels.objects.get(user=user)
-      notas, promedio = Notamodels.objects.sacar_promedio(estudiante)
-      return render(request, 'notas-alunnos.html', {"materia":notas, "promedio":promedio ,"estudiante":estudiante})
-   else:
-      return redirect('inicio_app:inicio')
+
+   user = request.user
+   estudiante = EstudiantesModels.objects.get(user=user)
+   notas, promedio = Notamodels.objects.sacar_promedio(estudiante)
+   return render(request, 'notas-alunnos.html', {"materia":notas, "promedio":promedio ,"estudiante":estudiante})
+
 
 
 

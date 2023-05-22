@@ -1,11 +1,14 @@
 from pathlib import Path
+import os
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
-SECRET_KEY = 'django-insecure-_y#kvnf#emmg%^=%i6zcnji@)_cra0w3x5=-lsna*8vvf2ujra'
 
+SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 DJANGO_APPS = (
     'django.contrib.admin',
@@ -24,6 +27,7 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THRE_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,6 +91,9 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR , "static") ,
