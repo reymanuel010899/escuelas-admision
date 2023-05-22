@@ -27,7 +27,7 @@ def avances_academicos(request):
    if request.method == 'GET':
       user = request.user
       estudiante = EstudiantesModels.objects.get(user=user)
-      materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('-created')
+      materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('created')
    return render(request, 'avances-academicos.html', {"carrera":materias})
 
 
