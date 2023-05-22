@@ -7,8 +7,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
-
-SECRET_KEY = os.environ.get('SECRET_KEY','')
+SECRET_KEY = 'django-insecure-_y#kvnf#emmg%^=%i6zcnji@)_cra0w3x5=-lsna*8vvf2ujra'
+#SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 DJANGO_APPS = (
     'django.contrib.admin',
