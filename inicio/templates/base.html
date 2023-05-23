@@ -27,9 +27,10 @@
                         <li> <a href="{% url 'users_app:cerrar-seccion'  %} ">Salir</a></li><li> 
                         {% else %}
                             <li> <a href="{% url 'inicio_app:inicio' %} ">Informacion Personal</a> </li> <li> 
-                            <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank">Pensum Academico</a></li><li>
+     
                             <li> <a href="{% url 'inicio_app:avances-academicos' %} ">Avances Academicos</a></li><li> 
-                                <li> <a href="{% url 'inicio_app:notas-alunno' %} ">Historial Academico</a></li><li> 
+                             <li> <a href="{% url 'inicio_app:notas-alunno' %} ">Historial Academico</a></li><li> 
+                            <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank">Pensum Academico</a></li><li>
                             <li> <a href="{% url 'inicio_app:correo-cemtro' %} ">Acerca Escuela</a></li><li> 
                             <li> <a href="{% url 'users_app:cerrar-seccion'  %} ">Salir</a></li><li> 
                         {% endif %}
