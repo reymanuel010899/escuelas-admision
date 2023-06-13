@@ -105,7 +105,7 @@ class SecionModels(models.Model):
     
 class MateriasModels(models.Model):
     carrera = models.ForeignKey('CarrerasModels', related_name="carrera_materia_reverce", on_delete=models.CASCADE)
-    # semestre = models.ForeignKey(SemestreModels, related_name="materia_semestre_reverce", on_delete=models.CASCADE )
+    semestre = models.ForeignKey(SemestreModels, related_name="materia_semestre_reverce", on_delete=models.CASCADE )
     nombre = models.CharField(max_length=50)
     profesor = models.ForeignKey(ProfesoresModels, blank=True , null=True, related_name='materia_reverce', on_delete=models.CASCADE)
     codigo = models.CharField(max_length=20)
