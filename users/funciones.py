@@ -26,7 +26,7 @@ def registrar_datos(request, estudiante, form_is_militar, form_sector, form_hist
     siglas_escuela = request.POST.get('sigla-escuela','')
     promocion = request.POST.get('promocion','')
     matricula = request.POST.get('matricula','')
-    fecha_actual = request.POST.get('fecha-actual','')
+
     nombre = request.POST.get('nombre','')
     apellido = request.POST.get('apellido','')
     fecha_nacimiento = request.POST.get('fecha-nacimiento','')
@@ -53,7 +53,7 @@ def registrar_datos(request, estudiante, form_is_militar, form_sector, form_hist
    
     DatosPersonales.objects.create(estudiante=estudiante,
                                     siglas_escuela=siglas_escuela,
-                                    promocion=promocion, matricula=matricula, fecha=fecha_actual,
+                                    promocion=promocion, matricula=matricula, 
                                     fecha_nacimiento=fecha_nacimiento, lugar_nacimiento=lugar_nacimiento, 
                                     nacionalidad=nacionalidad, provincia=provincia, 
                                     municipio=municipio, Secion=secion,

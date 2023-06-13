@@ -183,7 +183,7 @@ class DatosPersonales(models.Model):
     siglas_escuela=models.CharField(max_length=75, blank=True, null=True)
     promocion=models.CharField(max_length=75, blank=True, null=True)
     matricula=models.CharField(max_length=20)
-    fecha=models.DateField()
+    # fecha=models.DateField()
     fecha_nacimiento = models.DateField()
     lugar_nacimiento = models.CharField(max_length=100) 
     nacionalidad = models.CharField(max_length=20)
@@ -204,7 +204,6 @@ class DatosPersonales(models.Model):
     alergico=models.CharField(max_length=50)
     sexo = models.CharField(max_length=20, choices=GENDER)
     militar=models.BooleanField(default=True)
-    created = models.DateField(auto_now_add=True)
     
     class Meta:
         verbose_name = "Datos Personale"
@@ -223,7 +222,7 @@ class DatosSiEsMilitar(models.Model):
     institucion=models.CharField(max_length=50, blank=True, null=True)
     fecha_ingreso=models.DateField()
     ultimo_asenso=models.DateField()
-    nombre_liceo=models.CharField()
+    nombre_liceo=models.CharField(max_length=45)
     sector_educativo=models.CharField(max_length=10, choices=SECTOR_EDUCATIVO)
     idiomas_dominas=models.CharField(max_length=10, choices=IDIOMAS)
 

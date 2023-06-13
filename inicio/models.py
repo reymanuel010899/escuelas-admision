@@ -14,7 +14,7 @@ class NotasProfesor(models.Model):
     parcial = models.PositiveIntegerField(blank=True, null=True)
     filnal_ex = models.PositiveIntegerField(blank=True, null=True)
     nota_final = models.PositiveIntegerField(blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateField(auto_now_add=True)
     
     def __str__(self):
         return self.alunno.user.nombre
