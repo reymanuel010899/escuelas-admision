@@ -10,7 +10,7 @@ def context_user(request):
         
         return {
             'escuela':curso,
-            'personales':personales,
+            #'personales':personales,
             #'datosmilitares':datos_militares
         }
         
