@@ -66,7 +66,7 @@ def registrar_alunnos(request, pk):
         password = request.POST.get('Password')
         curso = request.POST.get('nombre')
         perfil = request.FILES.get('foto')
-        nombre = request.POST.get('nombre')
+        nombres = request.POST.get('nombres')
         apellido = request.POST.get('apellido')
         genero = request.POST.get('sexo')
         ubication = request.POST.get('direcion')
@@ -74,7 +74,7 @@ def registrar_alunnos(request, pk):
         cedula = request.POST.get('cedula')
         
         user = User.objects.create_superuser(username, gmail, password)
-        user.nombre = nombre
+        user.nombre = nombres
         user.apellido = apellido
         user.genero = genero
         user.ubicacion = ubication
