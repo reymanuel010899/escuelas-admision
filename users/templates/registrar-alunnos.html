@@ -17,62 +17,233 @@
                 </div>
     
                 <div class="settings_content">
-                    <H3>Registrar Estudiantes</H3>
-                    {{user}}
-                    <form  method="POST">{% csrf_token %}
+                    <H1>Registrar Estudiantes</H1>
+                    <h2>Datos Personales</h2>
+                    <form  method="POST" enctype="multipart/form-data">{% csrf_token %}
                         <div class="pi-input pi-input-lg">
-                            <h6>Nombre</h6>
-                            <input type="text" placeholder="Nombre ..." required value=""/>
+                            <h5>Siglas Escuela</h5>
+                            <input type="text" name="sigla-escuela" placeholder="siglas de esta escuela ..." required value=""/>
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Apellido</h6>
-                            <input type="text" placeholder="Apellido ... " value="" required name="apellido" />
+                            <h5>Promocion</h5>
+                            <input type="date" name="promocion" placeholder="Promocion ..." required value=""/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Matricula</h5>
+                            <input type="text" name="matricula" placeholder="Matricula ..." required value=""/>
+                        </div>
+                        
+                        
+                        <div class="pi-input pi-input-lg">
+                            <h5>Fecha</h5>
+                            <input type="date" name="fecha-actual" placeholder="fecha actual ..." required value=""/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Nombre</h5>
+                            <input type="text" name="nombre" placeholder="Nombre ..." required value=""/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Apellido</h5>
+                            <input type="text" name="apellido" placeholder="Apellido ... " value="" required  />
                         </div>
                        
                         <div class="pi-input pi-input-lg">
-                            <h6>Fecha de nacimiento</h6>
-                            <input type="date" value="1985-01-08" required name="cumpleaño"/>
+                            <h5>Fecha de nacimiento</h5>
+                            <input type="date" name="fecha-nacimiento"  value="2000-01-08" required/>
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Telefono</h6>
-                            <input type="text" placeholder="escribe tu numero" required name="telefono" />
+                            <h5>Lugar De Nacimiento</h5>
+                            <input type="text" name="lugar-nacimiento" placeholder="Lugar de nacimiento ..." required value=""/>
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Pais</h6>
-                            <input type="text" placeholder="escripe tu pais" required Name="pais"  />
+                            <h5>Nacionalidad</h5>
+                            <input type="text" name="nacionalidad" placeholder="Nacionalidad ..." required  />
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Provincia</h6>
-                            <input type="text" placeholder="escribe tu provincia" required name="provincia" />
+                            <h5>Provincia</h5>
+                            <input type="text" name="provincia" placeholder="provincia ..." required  />
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Municipio</h6>
-                            <input type="text" placeholder="escribe tu municipio" required name="municipio" />
+                            <h5>Municipio De Precedencia</h5>
+                            <input type="text" name="municipio" placeholder="Municipio De Precedencia ..." required  />
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Direccion</h6>
-                            <input type="text" placeholder="escribe tu municipio" required name="direcion" />
+                            <h5>Secion</h5>
+                            <input type="text" name="secion" placeholder="secion ..." required  />
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Cedula</h6>
-                            <input type="text" placeholder="escribe tu municipio" required name="cedula"  />
+                            <h5>Estado Civil</h5>
+                            <input type="text" name="estado-civil" placeholder="Estado Civil ..." required  />
                         </div>
                         <div class="pi-input pi-input-lg">
-                            <h6>Matricula</h6>
+                            <h5>No. de Cedula / Pasaporte</h5>
+                            <input type="text" name="cedula" placeholder="No. de Cedula / Pasaporte ... " required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Telefono Res.</h5>
+                            <input type="text" name="telefono-res" placeholder="Telefono de Residencia ..." required  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Telefono Ofic.</h5>
+                            <input type="text" name="telefono-ofi" placeholder="Telefono Oficina ..." required/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Direcion</h5>
+                            <input type="text" name="direcion" placeholder="direcion ... " required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Celular</h5>
+                            <input type="text" name="celular" placeholder="No. de Cedula / Pasaporte ... " required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Lugar De Trabajo</h5>
+                            <input type="text" name="lugar-trabajo" placeholder="Lugar De Trabajo ..." required  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>alguna Discapasidad (si/no)</h5>
+                            <input type="text" name="discapasidad" placeholder="alguna Discapasidad (si/no) " required  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Tipo de Sangre</h5>
+                            <input type="text" name="sangre" placeholder="Tipo de Sangre ..." required  />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Funcion Que Desenpeña</h5>
+                            <input type="text" name="funcion-desenpeña" placeholder="Funcion Que Desenpeña ..." required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Sexo: </h5>
+                            <input type="text" name="sexo" placeholder="Sexo (F/M)" required   />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Correo</h5>
+                            <input type="text" name="correo" placeholder="Correo ..." required   />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Alergico</h5>
+                            <input type="text" name="alergico" placeholder="a que eres alergico ..." required   />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Militar</h5>
+                        <h5>{{personales.militar}}</h5>
+                        </div>
+
+                        <h2>Si Eres Militar Completar Los Siguientes Datos</h2>
+                        <h2>Datos Academicos</h2>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Rango</h5>
+                            <input type="text" name="rango" placeholder="Rango ..." required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Institucion</h5>
+                            <input type="text" name="institucion" placeholder="Institucion ..." required />
+                        </div>
+                
+                        <div class="pi-input pi-input-lg">
+                            <h5>Fecha de Ingreso</h5>
+                            <input type="date" name="fecha-ingreso" value="2000-01-08" required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Ultimo Ascenso </h5>
+                            <input type="date" name="ultimo-ascenso" value="2000-01-08" required/>
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Bachiller</h5>
+                            <input type="text" name="bachiller" placeholder="Si eres Bachiller (si/no)" required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Nombre Cemtro Educativo</h5>
+                            <input type="text" name="nombre-educativo" placeholder="Nombre  Del Cemtro Educativo ..."  required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Sector Educativo</h5>
+                            {{registro.sector_educativo}}
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Idiomas Dominas</h5>
+                            <input type="text" name="idiomas" placeholder="idiomas que dominas ..."  required />
+                        </div>
+                        <h2 style="margin-bottom: 75px; margin-top: 50px;">Historia Educativa</h2>
+
+                        <table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width: 90%;">
+                            <tbody>
+                                <tr style="background-color: rgb(250, 250, 250); color: rgb(0, 0, 0);">
+                                    <th class="centro" scope="col">Nivel</th><th class="centro" scope="col">Institucion</th><th class="centro" scope="col">Lugar</th><th class="centro" scope="col">finalizacion</th><th class="centro" scope="col">Grado</th>
+                                </tr>
+                           
+                         
+                                <tr  style="background-color:rgb(222, 222, 222); color: black;">
+                                    <td  class="centro" placeholder="Basico"  align="center">{{historialeducatifoform.nivel}}</td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.institucion_escuelas}} </td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.lugar}} </td><td class="centro"  align="center">{{historialeducatifoform.finalizacion}}  </td><td style="background-color: rgb(222, 222, 222); color: rgb(0, 0, 0);" class="centro"  align="center">{{historialeducatifoform.grado}}</td>
+                                </tr>
+                                <tr  style="background-color:rgb(222, 222, 222); color: black;">
+                                    <td  class="centro"  align="center">{{historialeducatifoform.nivel}}</td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.institucion_escuelas}} </td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.lugar}} </td><td class="centro"  align="center">{{historialeducatifoform.finalizacion}}  </td><td style="background-color: rgb(222, 222, 222); color: rgb(0, 0, 0);" class="centro"  align="center">{{historialeducatifoform.grado}}</td>
+                                </tr>
+                                <tr  style="background-color:rgb(222, 222, 222); color: black;">
+                                    <td  class="centro"  align="center">{{historialeducatifoform.nivel}}</td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.institucion_escuelas}} </td>
+                                    <td class="centro"  align="center">{{historialeducatifoform.lugar}} </td><td class="centro"  align="center">{{historialeducatifoform.finalizacion}}  </td><td style="background-color: rgb(222, 222, 222); color: rgb(0, 0, 0);" class="centro"  align="center">{{historialeducatifoform.grado}}</td>
+                                </tr>
+        
+                            
+                            </tbody>
+                        </table>
+                        <h2 style="margin-top: 75px;">Datos Familiares</h2>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Padre</h5>
+                            <input type="text" name="padre" placeholder="escriba nombre del padre ..."  required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Madre</h5>
+                            <input type="text" name="madre" placeholder="escriba nombre de la madre ..."   required />
+                        </div>
+                     
+                        <div class="pi-input pi-input-lg">
+                            <h5>Espas@</h5>
+                            <input type="text" placeholder="escriba nombre de la  esposa ..."  name="esposa" required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>Hijos</h5>
+                            <input type="text" placeholder="escriba nombre de los hijos ..."  name="hijos" required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>telefonos</h5>
+                            <input type="text" placeholder="escriba nun numero de telefono ..."  name="telefono" required />
+                        </div>
+                        <div class="pi-input pi-input-lg">
+                            <h5>telefonos emergencia</h5>
+                            <input type="text" placeholder="escriba nun numero de telefono emergencia ..."  name="telefono-emergencia" required />
+                        </div>
+
+                        <h3>Crearle Su Matricula Y contraseña</h3>
+
+                        <div class="pi-input pi-input-lg">
+                            <h5>Matricula</h5>
                             <input type="text" placeholder="Matricula ..." required name="matricula" />
                         </div>
+
                         <div class="pi-input pi-input-lg">
-                            <h6>Gmail</h6>
-                            <input type="text" placeholder="Gmail ..."name="gmail"  required  />
+                            <h5>Password</h5>
+                            <input type="text" placeholder="Password ..."  name="Password" required />
                         </div>
-                        <div class="pi-input pi-input-lg">
-                            <h6>Password</h6>
-                            <input type="text" placeholder="Password"  name="Password" required />
-                        </div>
-                        <div>
+
+
+                        <div class="P-input pi-iniput-lg">
                             <h5>Carreras</h5>
                             <p style="height: 20%;" >{{form.nombre}}</p>
                         </div>
+                        
+
+                        <div class="p-input pi-iniput-lg">
+                            <h5>Foto 2x2</h5>
+                            {{imagenform.avatar}}
+                        </div>
+
+
+
                         <button style="background-color: #050c86 ;" type="submit">Save</button>
                     </form>
             </div></center>

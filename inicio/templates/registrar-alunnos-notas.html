@@ -4,15 +4,19 @@
 {% block content %}
 
 {% for mate in materia %}
-    <span style="margin-left:15px ;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
+    <span onmouseover="cambiarcolor(this)"  onmouseout="cambiar(this)"   style="margin-left:15px ;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
 {% endfor %}
 <br><br>
 
 {% for sec in seciones %}
+{% if sec %}
+<span style="margin-left: 15px;">secion:</span>
+
 {% if sec.materia.profesor.user == user %}
 <ul>
-    <li><span style="margin-left:15px ;"><a href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
+    <li id="cambiarcolors" onmouseover="cambiarcolor(this)" onmouseout="cambiar(this)"><span style="margin-left:15px ;"><a href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
 </ul>
+{% endif %}
 {% endif %}
 {% endfor %}
 
@@ -22,13 +26,9 @@
     <button class="btn btn-outline-primary"  type="submit">Añadir</button>
 </form>
 <br><br>
-<!-- {% if alunno %}
-<form action="" method="POST">{% csrf_token %}
-<span><h4>{{alunno.user.nombre}}  <span style="margin-left: 5%;">{{alunno.carrera}}</span><button style="margin-left: 10%;" class="btn btn-primary" href="?agregar={{alunno.id}} ">+</button></h4></span>
-</form>
-{% endif %} -->
+
   
-<br><br><br>
+<br>
 
 
 

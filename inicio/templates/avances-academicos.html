@@ -1,30 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  
-  <h2 style="text-align: center;">{{escuela.carrera}} </h2>
-  <table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%;border-collapse:collapse;">
+
+   <h2 style="margin: auto;">{{escuela.carrera}} </h2> 
+
+<table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%; border-collapse:collapse;">
     <tbody>
+
     <tr style="background-color: rgb(1, 1, 51); color: antiquewhite;">
-        <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Codigo Asignatura</th><th class="centro" scope="col">Asignatura</th><th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Calificación</th>
+        <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Codigo Asignatura</th><th class="centro" scope="col">Asignatura</th><th>creditos</th> <th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Calificación</th>
     </tr>
- 
-    {% for materia in carrera  %}
- 
-        <tr  style="background-color:rgb(230, 230, 255);">
+    
+    {% for materia in semestres  %}
+    <tr style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+        <th class="centro" style="background-color: rgb(255, 255, 255);" align="center">Semestre: {{materia.semestre}}</th><th style="background-color: rgb(255, 255, 255);"class="centro" scope="col"></th><th class="centro" scope="col"></th><th class="centro" scope="col"></th><th class="centro" scope="col"></th>
+    </tr>
+  
+      
+
+        {% for mate in materia.materia.all %}
+        <tr style="background-color:rgb(230, 230, 255);">
             <td  class="centro"  align="center">{{materia.semestre}} </td>
-            <td> {{materia.codigo}} </td>
-            <td>{{materia.nombre}} </td>{% for b in materia.nota_reverce.all %}{% if b.estudiate.user == user %}<td> {% if b.materia.profesor %} {{b.materia.profesor}} {% else %}  {% endif %} </td>{% if b.nota >= 70 %}<td style="background-color: rgb(1, 1, 51); color: aliceblue;" > {{b}} </td> {% else %}  <td style="background-color: rgb(138, 7, 7); color: aliceblue;">{{b}}</td> {% endif %} {% endif %}{% endfor %} </td>
+            <td> {{mate.codigo}} </td>
+            <td>{{mate.nombre}} </td><td>{{mate.credito}} </td> {% for b in mate.nota_reverce.all %}{% if b.estudiate.user == user %}<td> {% if b.materia.profesor %} {{b.materia.profesor}} {% else %}  {% endif %} </td>{% if b.nota >= 70 %}<td style="background-color: rgb(1, 1, 51); color: aliceblue;" > {{b}} </td> {% else %}  <td style="background-color: rgb(138, 7, 7); color: aliceblue;">{{b}}</td> {% endif %} {% endif %}{% endfor %} </td>  
         </tr>
-    
-    
- 
-    
-    {% endfor %}
+        {% endfor %}
 
- 
 
-       
-</tbody></table>
+        <td>
+     
+            {% if materia.indice_semestral %}
+            Indice semestral: {{materia.indice_semestral|truncatechars:6 }}
+            {% endif %} 
+        </td>
+    {% endfor %}    
+</tbody></table> 
+
+<td>
+   <span style="margin-right: 45%;">Promedio total: {% if promedio %} {{promedio|truncatechars:6}} {% else  %}  0  {% endif %} </span>
+   <span>Cantidad Creditos: {{cantidad}}</span>
+</td>
+
 {% endblock content %}
 

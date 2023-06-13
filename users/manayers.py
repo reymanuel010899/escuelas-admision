@@ -45,7 +45,15 @@ class MateriaManayers(models.Manager):
     
 class NotaManayer(models.Manager):
     def sacar_promedio(self, estudiante):
-        notas = self.filter(estudiate=estudiante, )
+        
+        
+        id_semestre = set()
+        
+        notas = self.filter(estudiate=estudiante)
+        for nat in notas:
+            id_semestre.add(nat.materia.semestre.id)
+            
+            
         lista = list()
         if  notas:
             for  noa in notas:
@@ -54,8 +62,8 @@ class NotaManayer(models.Manager):
                 promedio = sum(lista) / len(lista)
             except:
                 return 0
-            return notas, promedio
+            return notas, promedio, id_semestre
         else:
-            return [],[]
+            return [],[], list(id_semestre)
             
      

@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import NotasProfesor
-from users.models import CarrerasModels, MateriasModels, EstudiantesModels, Notamodels, SecionModels, ProfesoresModels
+from users.models import CarrerasModels, MateriasModels, EstudiantesModels, Notamodels, SecionModels, ProfesoresModels, SemestreModels
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.db.models import Sum
 from django.views.generic import UpdateView
 from .form import RegistroNotaForm
 from django.urls import reverse_lazy
-from .funciones import sacar_seciones
+from .funciones import sacar_seciones, avances_matriz, sumar_creditos
+      
 
 
 
@@ -27,8 +28,12 @@ def avances_academicos(request):
    if request.method == 'GET':
       user = request.user
       estudiante = EstudiantesModels.objects.get(user=user)
-      materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('created')
-   return render(request, 'avances-academicos.html', {"carrera":materias})
+      notas, promedio, id_semestre = Notamodels.objects.sacar_promedio(estudiante)
+      # materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('created')
+      prueba , otros = avances_matriz(estudiante)
+      
+      
+   return render(request, 'avances-academicos.html', {'semestres':prueba, 'promedio':promedio, 'cantidad':otros })
 
 
 
@@ -41,11 +46,17 @@ def acerca_scholl(request):
 
 @login_required(login_url='users_app:escuelas')
 def notas_del_alunno(request):
-
    user = request.user
    estudiante = EstudiantesModels.objects.get(user=user)
-   notas, promedio = Notamodels.objects.sacar_promedio(estudiante)
-   return render(request, 'notas-alunnos.html', {"materia":notas, "promedio":promedio ,"estudiante":estudiante})
+   prueba, otros = avances_matriz(estudiante)
+   
+   
+   
+   notas, promedio, id_semestre = Notamodels.objects.sacar_promedio(estudiante)
+   
+   semestres = SemestreModels.objects.filter(carrera=estudiante.carrera, id__in=id_semestre).annotate(indice_semestral=Sum('materia__nota_reverce__nota')/2 ).order_by('created')
+   
+   return render(request, 'notas-alunnos.html', {"nota":notas, "promedio":promedio ,"estudiante":estudiante,'semes':semestres })
 
 
 

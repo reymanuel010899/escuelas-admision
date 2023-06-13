@@ -73,7 +73,10 @@ class ProfesoresModels(models.Model):
     
     
 class SemestreModels(models.Model):
+    estudiante = models.ForeignKey(EstudiantesModels, related_name="estudoante_semestre_reverce", on_delete=models.CASCADE)
+    carrera = models.ForeignKey('CarrerasModels', related_name="semestre_carrera", on_delete=models.CASCADE)
     semestre = models.PositiveIntegerField()
+    materia  =  models.ManyToManyField('MateriasModels', related_name="materia_semestres")
     created = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -101,10 +104,12 @@ class SecionModels(models.Model):
     
     
 class MateriasModels(models.Model):
+    carrera = models.ForeignKey('CarrerasModels', related_name="carrera_materia_reverce", on_delete=models.CASCADE)
+    semestre = models.ForeignKey(SemestreModels, related_name="materia_semestre_reverce", on_delete=models.CASCADE )
     nombre = models.CharField(max_length=50)
     profesor = models.ForeignKey(ProfesoresModels, blank=True , null=True, related_name='materia_reverce', on_delete=models.CASCADE)
-    semestre = models.ForeignKey(SemestreModels, blank=True, related_name='semestre_reverce', on_delete=models.CASCADE)
     codigo = models.CharField(max_length=20)
+    credito = models.PositiveIntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True)
     objects = MateriaManayers()
     
@@ -131,7 +136,7 @@ class Notamodels(models.Model):
     def __str__(self):
         return str(self.nota)
     
-    
+    # la materias es que tienen que tener carreras
 class CarrerasModels(models.Model):
     nombre = models.CharField(max_length=50)
     pemsum = models.FileField(upload_to='pemsun/')
@@ -150,7 +155,7 @@ class CarrerasModels(models.Model):
     
     
 class EscuelasModels(models.Model):
-    nombre = models.CharField(max_length=70)
+    nombre = models.CharField(max_length=80)
     director = models.ForeignKey(DirectorModels, blank=True, null=True, related_name='director_reverce', on_delete=models.CASCADE)
     estudiantes = models.ManyToManyField(EstudiantesModels, blank=True,  related_name='estudiantes_reverce')
     profesores = models.ManyToManyField(ProfesoresModels, blank=True, related_name='profesores_reverce')
@@ -167,13 +172,103 @@ class EscuelasModels(models.Model):
         
     def __str__(self):
         return self.nombre    
+
+
+
+GENDER=(('m','MASCULINO'),('f','FEMENINO'))
+ESTADO_CIVIL=(('s','SOLTERO'),('c', 'CASADO'),('u','UNION LIBRE' ))
+
+class DatosPersonales(models.Model):
+    estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="Datos_personales_reverce", on_delete=models.CASCADE)
+    siglas_escuela=models.CharField(max_length=75, blank=True, null=True)
+    promocion=models.CharField(max_length=75, blank=True, null=True)
+    matricula=models.CharField(max_length=20)
+    fecha=models.DateField()
+    fecha_nacimiento = models.DateField()
+    lugar_nacimiento = models.CharField(max_length=100) 
+    nacionalidad = models.CharField(max_length=20)
+    provincia=models.CharField(max_length=50)
+    municipio=models.CharField(max_length=50)
+    Secion=models.CharField(max_length=35)
+    estado_civil=models.CharField(max_length=20, choices=ESTADO_CIVIL)
+    no_cedula=models.CharField(max_length=15)
+    telefono_res=models.CharField(max_length=20, blank=True, null=True)
+    direcion=models.CharField(max_length=150)
+    celular=models.CharField(max_length=20)
+    telefono_ofic=models.CharField(max_length=20, blank=True, null=True)
+    lugar_trabajo=models.CharField(max_length=75)
+    alguna_discapasidad=models.CharField(max_length=20)
+    tipo_sangre=models.CharField(max_length=25)
+    funcion_desenpeña=models.CharField(max_length=100)
+    correo=models.EmailField()
+    alergico=models.CharField(max_length=50)
+    sexo = models.CharField(max_length=20, choices=GENDER)
+    militar=models.BooleanField(default=True)
+
+    
+    class Meta:
+        verbose_name = "Datos Personale"
+        verbose_name_plural = "Datos Personales"
+        
+    def __str__(self):
+        return "hola"
+    
+    
+SECTOR_EDUCATIVO=(('P', 'PUBLICO'),('PR','PRIVADO'))
+IDIOMAS=(('español','ESPAÑOL'),('ingles', 'INGLES'),('otros', 'OTROS'))
+
+class DatosSiEsMilitar(models.Model):
+    estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="Datos_militar_reverce", on_delete=models.CASCADE)
+    rango=models.CharField(max_length=35, blank=True, null=True)
+    institucion=models.CharField(max_length=50, blank=True, null=True)
+    fecha_ingreso=models.DateField()
+    ultimo_asenso=models.DateField()
+    nombre_liceo=models.CharField()
+    sector_educativo=models.CharField(max_length=10, choices=SECTOR_EDUCATIVO)
+    idiomas_dominas=models.CharField(max_length=10, choices=IDIOMAS)
+
+    
+    class Meta:
+        verbose_name = "Datos Del Militar"
+        verbose_name_plural = "Datos Del Militar"
+        
+    def __str__(self):
+        return "hola"
     
     
     
     
+class HistorialEducativo(models.Model):
+    estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="historia_educativo_reverce", on_delete=models.CASCADE)
+    nivel=models.CharField(max_length=50, blank=True, null=True)
+    institucion_escuelas=models.CharField(max_length=50, blank=True, null=True)
+    lugar=models.CharField(max_length=50, blank=True, null=True)
+    finalizacion=models.DateField()
+    grado=models.CharField(max_length=15, blank=True, null=True)
+
+    
+    class Meta:
+        verbose_name = "historial educativo"
+        verbose_name_plural = "historial educativos"
+        
+    def __str__(self):
+        return self.estudiante.user.nombre
     
     
+class DatosFamiliares(models.Model):
+    estudiante = estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="datos_familiares_reverce", on_delete=models.CASCADE)
+    padre = models.CharField(max_length=50, blank=True, null=True)
+    madre =models.CharField(max_length=50, blank=True, null=True)
+    esposa=models.CharField(max_length=50, null=True, blank=True)
+    hijos=models.CharField(max_length=75, blank=True, null=True)
+    telefono=models.CharField(max_length=15, blank=True, null=True)
+    contacto_emergencia=models.CharField(max_length=70, blank=True, null=True)
+
     
-    
-    
+    class Meta:
+        verbose_name = "Datos De la familia"
+        verbose_name_plural = "Datos De las familia"
+        
+    def __str__(self):
+        return self.estudiante.user.nombre
     

@@ -8,49 +8,68 @@
                 
             </div>
               <H3>CARRERA</H3>
+              {% if user.is_superuser %}
+                
+              {% endif %}
                 <h2 style="margin-left: 10px;" >{{escuela.carrera}}</h2>
             <div class="settings_content">
                 
               
                     <div class="pi-input pi-input-lg">
                         <h6>Nombre</h6>
-                        <input type="text" value=" {{user.nombre}}" readonly />
+                        <input type="text" value=" {{personales.estudiante.user.nombre}}" readonly />
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Apellido</h6>
-                        <input type="text" value="{{user.apellido}}" name="apellido" readonly />
+                        <input type="text" value="{{personales.estudiante.user.apellido}}" name="apellido" readonly />
                     </div>
                     <div class="pi-input pi-input-lg">
-                        <h6>link red social</h6>
-                        <input type="text" value="https://www.instagram.com/reymanuelferreras/" name="webside" readonly/>
+                        <h6>Fecha Nacimiento</h6>
+                        <input type="text" value="{{personales.fecha_nacimiento}}" name="webside" readonly/>
                     </div>
                     <div class="pi-input pi-input-lg">
-                        <h6>Fecha de nacimiento</h6>
-                        <input type="date" value="1985-01-08" name="cumpleaño" readonly/>
+                        <h6>Nacionalidad</h6>
+                        <input type="text" value="{{personales.nacionalidad}} " name="cumpleaño" readonly/>
                     </div>
                     <div class="pi-input pi-input-lg">
-                        <h6>Telefono</h6>
-                        <input type="text" placeholder="escribe tu numero" name="telefono" readonly />
-                    </div>
-                    <div class="pi-input pi-input-lg">
-                        <h6>Pais</h6>
-                        <input type="text" placeholder="escripe tu pais" Name="pais" readonly />
-                    </div>
-                    <div class="pi-input pi-input-lg">
-                        <h6>Provincia</h6>
-                        <input type="text" placeholder="escribe tu provincia" name="provincia" readonly />
-                    </div>
-                    <div class="pi-input pi-input-lg">
-                        <h6>Municipio</h6>
-                        <input type="text" placeholder="escribe tu municipio" name="municipio" readonly/>
-                    </div>
-                    <div class="pi-input pi-input-lg">
-                        <h6>Direccion</h6>
-                        <input type="text" placeholder="escribe tu municipio" name="direcion" readonly/>
+                        <h6>Estado Civil</h6>
+                        <input type="text" placeholder="escribe tu numero" value="{{personales.get_estado_civil_display}} "  name="telefono" readonly />
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Cedula</h6>
-                        <input type="text" placeholder="escribe tu municipio" name="cedula" readonly />
+                        <input type="text" placeholder="escripe tu pais" value="{{personales.no_cedula}} " Name="pais" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Celular</h6>
+                        <input type="text" value="{{personales.celular}} " placeholder="escribe tu provincia" name="provincia" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Tipo Sangre</h6>
+                        <input type="text" value="{{personales.tipo_sangre}} " placeholder="escribe tu municipio" name="municipio" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Direccion</h6>
+                        <input type="text" value="{{personales.direcion}} " placeholder="escribe tu municipio" name="direcion" readonly/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Rango</h6>
+                        <input type="text" value="{{datosmilitares.rango}}" placeholder="escribe tu municipio" name="cedula" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Fecha Ingreso</h6>
+                        <input type="text" value="{{datosmilitares.fecha_ingreso}}" placeholder="escribe tu municipio" name="cedula" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Ultimo Ascenso</h6>
+                        <input type="text" value="{{datosmilitares.ultimo_asenso}}" placeholder="escribe tu municipio" name="cedula" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Institucion</h6>
+                        <input type="text" value="{{datosmilitares.institucion}}" placeholder="escribe tu municipio" name="cedula" readonly />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Correo</h6>
+                        <input type="text" value="{{personales.correo}}" placeholder="escribe tu municipio" name="cedula" readonly />
                     </div>
         </div></center>
     </div>

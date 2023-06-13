@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from .models import  EscuelasModels , User, CarrerasModels, EstudiantesModels
 from django.contrib.auth import  login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-
-from .form import DatosForms
+from .funciones import registrar_datos
+from .form import DatosForms , RegistrosEstudiantesForm, HistorialEducativoForm, DatosPersonalesForm, RegistrosForm, AvatarFormUser
 from django.contrib.auth.decorators import permission_required
 # Create your views here.
 
@@ -58,25 +58,47 @@ def cerrar_seccion(request):
         
 
 def registrar_alunnos(request, pk):
-    form = DatosForms(pk,  initial={"nombre":None, "Currently":None})
+    form_carreras = DatosForms(pk,  initial={"nombre":None, "Currently":None})
+
     if request.method == 'POST':
         username = request.POST.get('matricula')
-        gmail = request.POST.get('gmail')
+        gmail = request.POST.get('correo')
         password = request.POST.get('Password')
         curso = request.POST.get('nombre')
+        perfil = request.FILES.get('foto')
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        genero = request.POST.get('sexo')
+        ubication = request.POST.get('direcion')
+        rango = request.POST.get('rango','')
+        cedula = request.POST.get('cedula')
         
         user = User.objects.create_superuser(username, gmail, password)
-        user.is_superuser = True
+        user.nombre = nombre
+        user.apellido = apellido
+        user.genero = genero
+        user.ubicacion = ubication
         user.save()
         
-        carrera =  CarrerasModels.objects.get(id=curso)
+        imagen = AvatarFormUser(request.POST, request.FILES, instance=user, initial={'avatar':None})
+        if imagen.is_valid():
+            imagen.save()
+    
         
+        carrera =  CarrerasModels.objects.get(id=curso)
         escuela = EscuelasModels.objects.get(id=pk)
-           
-        EstudiantesModels.objects.create(user=user, carrera=carrera, escuela=escuela )
+     
+        form_is_militar = DatosPersonalesForm(request.POST)
+        estudiante = EstudiantesModels.objects.create(user=user, carrera=carrera, escuela=escuela, rango=rango, cedula=cedula  )
+        form_sector = RegistrosForm(request.POST)
+        form_historia = HistorialEducativoForm(request.POST)
+        registro = registrar_datos(request, estudiante, form_is_militar, form_sector, form_historia)
+        
+        
+        
         logout(request)
         return redirect('/')  
     
-    return render(request, 'registrar-alunnos.html', {"form":form})
+    return render(request, 'registrar-alunnos.html', {"form":form_carreras, "registro":RegistrosForm, 'historialeducatifoform':HistorialEducativoForm, 'personales':DatosPersonalesForm, 'imagenform':AvatarFormUser})
 
 

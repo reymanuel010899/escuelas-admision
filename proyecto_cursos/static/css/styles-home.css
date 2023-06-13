@@ -59,7 +59,7 @@ a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background:linear-gradient(90deg, #08045e, #ffffff);
+  background:linear-gradient(90deg, #030c2d, #ffffff);
   color: #fff;
   transition: all 0.3s;
 }
@@ -70,7 +70,7 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background:linear-gradient(90deg, #08045e, #ffffff);
+  background:linear-gradient(90deg, #030c2d, #ffffff);
 }
 
 #sidebar ul.components {
