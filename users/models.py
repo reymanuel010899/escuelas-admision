@@ -204,7 +204,7 @@ class DatosPersonales(models.Model):
     alergico=models.CharField(max_length=50)
     sexo = models.CharField(max_length=20, choices=GENDER)
     militar=models.BooleanField(default=True)
-
+    created = models.DateField(auto_now_add=True)
     
     class Meta:
         verbose_name = "Datos Personale"
