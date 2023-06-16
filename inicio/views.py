@@ -7,7 +7,7 @@ from django.db.models import Sum
 from django.views.generic import UpdateView
 from .form import RegistroNotaForm
 from django.urls import reverse_lazy
-from .funciones import sacar_seciones, avances_matriz, sumar_creditos
+from .funciones import sacar_seciones, avances_matriz, sumar_creditos, actualizar
       
 
 
@@ -161,3 +161,11 @@ def seccines_ultimas(request):
    secion = SecionModels.objects.filter(materia__profesor__user=user).first()
    if secion:
       return redirect('inicio_app:seciones-alunnos', pk=secion.pk)
+   
+   
+   
+
+def actualizar_datos(request):
+   if request.method == "POST":
+      actualizado = actualizar(request)
+   return render(request, 'actualizar.html')

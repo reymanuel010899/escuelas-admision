@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="right_row">
+    <div class="row border-radius">
+        <center><div class="settings shadow">
+            <div class="settings_title">
+                
+            </div>
+              <H3>CARRERA</H3>
+              {% if user.is_superuser %}
+                
+              {% endif %}
+                <h2 style="margin-left: 10px;" >{{escuela.carrera}}</h2>
+            <div class="settings_content">
+                
+                <form  method="POST">{% csrf_token %}
+                    <div class="pi-input pi-input-lg">
+                        <h6>Nombre</h6>
+                        <input type="text" name="nombre" value=" {{personales.estudiante.user.nombre}}"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Apellido</h6>
+                        <input type="text" value="{{personales.estudiante.user.apellido}}" name="apellido" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Fecha Nacimiento</h6>
+                        <input type="date" value="{{personales.fecha_nacimiento}}" name="webside"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Nacionalidad</h6>
+                        <input type="text" value="{{personales.nacionalidad}} " name="nacionalidad"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Estado Civil</h6>
+                        <input type="text" placeholder="estado civil" value="{{personales.get_estado_civil_display}} "  name="estado-civil"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Cedula</h6>
+                        <input type="text" placeholder="escripe tu pais" value="{{personales.no_cedula}} " Name="cedula" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Celular</h6>
+                        <input type="text" value="{{personales.celular}} " placeholder="escribe tu provincia" name="celular" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Tipo Sangre</h6>
+                        <input type="text" value="{{personales.tipo_sangre}} " placeholder="escribe tu municipio" name="samgre"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Direccion</h6>
+                        <input type="text" value="{{personales.direcion}} " placeholder="escribe tu municipio" name="direcion" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Rango</h6>
+                        <input type="text" value="{{datosmilitares.rango}}" placeholder="escribe tu municipio" name="rango" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Fecha Ingreso</h6>
+                        <input type="date" value="{{datosmilitares.fecha_ingreso}}" placeholder="escribe tu municipio" name="ingreso" />
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Ultimo Ascenso</h6>
+                        <input type="date" value="{{datosmilitares.ultimo_asenso}}" placeholder="escribe tu municipio" name="ultimo"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Institucion</h6>
+                        <input type="text" value="{{datosmilitares.institucion}}" placeholder="escribe tu municipio" name="institucion"/>
+                    </div>
+                    <div class="pi-input pi-input-lg">
+                        <h6>Correo</h6>
+                        <input type="text" value="{{personales.correo}}" placeholder="escribe tu municipio" name="correo"/>
+                    </div>
+                    <button style="background-color: #050c86 ;" type="submit">Save</button>
+                </form>
+        </div></center>
+    </div>
+</div>
+  
+{% endblock content %}

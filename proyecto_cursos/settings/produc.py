@@ -6,7 +6,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://escuelas-admision-production.up.railway.app']
 
-DATABASE_URL="postgresql://postgres:ILcxPxkJYSaesnwmLmjV@containers-us-west-10.railway.app:7190/railway"
+DATABASE_URL="postgresql://postgres:RFT6afSCVmiKEfxIJefZ@containers-us-west-97.railway.app:6099/railway"
 
 
 DATABASES = {

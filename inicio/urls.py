@@ -12,6 +12,7 @@ urlpatterns =[
     path('registro-nota/', views.registrar_nota, name="registro-nota"),
     path('ultima-secion/', views.seccines_ultimas, name='ultima-secciones'),
     path('seciones-alunnos/<pk>/', views.alunnos_seciones, name="seciones-alunnos"),
+    path('actualizar-mis-datos/', views.actualizar_datos, name="actualizar-datos")
 
 
 ]

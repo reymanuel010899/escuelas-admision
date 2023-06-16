@@ -239,11 +239,24 @@ class DatosSiEsMilitar(models.Model):
     
 class HistorialEducativo(models.Model):
     estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="historia_educativo_reverce", on_delete=models.CASCADE)
-    nivel=models.CharField(max_length=50, blank=True, null=True)
-    institucion_escuelas=models.CharField(max_length=50, blank=True, null=True)
-    lugar=models.CharField(max_length=50, blank=True, null=True)
-    finalizacion=models.DateField()
-    grado=models.CharField(max_length=15, blank=True, null=True)
+    nivel_basico =models.CharField(max_length=50, blank=True, null=True)
+    institucion_escuelas_basico =models.CharField(max_length=50, blank=True, null=True)
+    lugar_basico = models.CharField(max_length=50, blank=True, null=True)
+    finalizacion_basico =models.DateField()
+    grado_basico =models.CharField(max_length=15, blank=True, null=True)
+
+    nivel_bachiller =models.CharField(max_length=50, blank=True, null=True)
+    institucion_escuelas_bachiller =models.CharField(max_length=50, blank=True, null=True)
+    lugar_bachiller = models.CharField(max_length=50, blank=True, null=True)
+    finalizacion_bachiller = models.DateField()
+    grado_bachiller = models.CharField(max_length=15, blank=True, null=True)
+
+    nivel_uni = models.CharField(max_length=50, blank=True, null=True)
+    institucion_escuelas_uni = models.CharField(max_length=50, blank=True, null=True)
+    lugar_uni = models.CharField(max_length=50, blank=True, null=True)
+    finalizacion_uni = models.DateField()
+    grado_uni = models.CharField(max_length=15, blank=True, null=True)
+
 
     
     class Meta:
