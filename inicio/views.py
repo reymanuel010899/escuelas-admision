@@ -168,4 +168,5 @@ def seccines_ultimas(request):
 def actualizar_datos(request):
    if request.method == "POST":
       actualizado = actualizar(request)
+      return redirect('inicio_app:inicio')
    return render(request, 'actualizar.html')

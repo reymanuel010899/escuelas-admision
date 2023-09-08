@@ -1,23 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="right_row">
+<div class="right_row" style="background-color: rgb(255, 255, 255);">
     <div class="row border-radius">
         <center><div class="settings shadow">
             <div class="settings_title">
-                
             </div>
               <H3>CARRERA</H3>
               {% if user.is_superuser %}
-                
               {% endif %}
                 <h2 style="margin-left: 10px;" >{{escuela.carrera}}</h2>
             <div class="settings_content">
-                
-              
                     <div class="pi-input pi-input-lg">
                         <h6>Nombre</h6>
-                        <input type="text" value=" {{personales.estudiante.user.nombre}}" readonly />
+                        <input type="text" style="border: none;" value=" {{personales.estudiante.user.nombre}}" readonly />
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Apellido</h6>

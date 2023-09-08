@@ -13,34 +13,9 @@
         <tr style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
             <th class="centro" style="background-color: rgb(255, 255, 255);" align="center">Semestre: {{sem.semestre}}</th><th style="background-color: rgb(255, 255, 255);"class="centro" scope="col"></th><th class="centro" scope="col"></th><th class="centro" scope="col"></th><th class="centro" scope="col"></th>
         </tr>
-
-
-   
-            <!--                 
-                    {% for mate in sem.materia.all  %}
-                    
-               
-                                <tr style="background-color:rgb(230, 230, 255)" >
-                                    <td class="centro" align="center">{{mate.materia.semestre}} </td><td>{{mate.materia.codigo}} </td><td>{{mate.materia.profesor}} </td> <td>{{mate.materia.nombre}} </td><td>{{mate.nota}} </td><td>{% if  mate.nota >= 70  and  mate.nota < 80 %} C
-                                {% elif mate.nota < 70 %}
-                                        X
-                                {% elif  mate.nota >= 80 and  mate.nota < 90 %}
-                                B
-                                {% elif  mate.nota >= 90 and  mate.nota <= 100 %}
-                                A
-                                </td>
-                                </tr>
-                                {% endif %}
-                    {% endfor %} 
-             <td style="background-color: rgb(255, 246, 218); color: rgb(0, 0, 0);">
-            Indice semestral: {{sem.indice_semestral}}
-            
-         </td>   -->
-         
         <td>
             {{sem.indice_semestral}}
         </td>
-
          {% endfor %} 
        </h4></span> </td>
 </tbody>

@@ -6,7 +6,6 @@
     <div class="row border-radius">
         <center><div class="settings shadow">
             <div class="settings_title">
-                
             </div>
               <H3>CARRERA</H3>
               {% if user.is_superuser %}
@@ -18,61 +17,61 @@
                 <form  method="POST">{% csrf_token %}
                     <div class="pi-input pi-input-lg">
                         <h6>Nombre</h6>
-                        <input type="text" name="nombre" value=" {{personales.estudiante.user.nombre}}"/>
+                        <input type="text" name="nombre" value="{{personales.estudiante.user.nombre}}" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Apellido</h6>
-                        <input type="text" value="{{personales.estudiante.user.apellido}}" name="apellido" />
+                        <input type="text" value="{{personales.estudiante.user.apellido}}" name="apellido" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Fecha Nacimiento</h6>
-                        <input type="date" value="{{personales.fecha_nacimiento}}" name="webside"/>
+                        <input type="date" value="{{personales.fecha_nacimiento}}" name="nacimiento" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Nacionalidad</h6>
-                        <input type="text" value="{{personales.nacionalidad}} " name="nacionalidad"/>
+                        <input type="text" value="{{personales.nacionalidad}} " name="nacionalidad" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Estado Civil</h6>
-                        <input type="text" placeholder="estado civil" value="{{personales.get_estado_civil_display}} "  name="estado-civil"/>
+                        <input type="text" placeholder="estado civil" value="{{personales.get_estado_civil_display}} "  name="estado-civil" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Cedula</h6>
-                        <input type="text" placeholder="escripe tu pais" value="{{personales.no_cedula}} " Name="cedula" />
+                        <input type="text" placeholder="escripe tu pais" value="{{personales.no_cedula}} " Name="cedula" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Celular</h6>
-                        <input type="text" value="{{personales.celular}} " placeholder="escribe tu provincia" name="celular" />
+                        <input type="text" value="{{personales.celular}} " placeholder="escribe tu provincia" name="celular" required />
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Tipo Sangre</h6>
-                        <input type="text" value="{{personales.tipo_sangre}} " placeholder="escribe tu municipio" name="samgre"/>
+                        <input type="text" value="{{personales.tipo_sangre}} " placeholder="escribe tu municipio" name="samgre" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Direccion</h6>
-                        <input type="text" value="{{personales.direcion}} " placeholder="escribe tu municipio" name="direcion" />
+                        <input type="text" value="{{personales.direcion}} " placeholder="escribe tu municipio" name="direcion" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Rango</h6>
-                        <input type="text" value="{{datosmilitares.rango}}" placeholder="escribe tu municipio" name="rango" />
+                        <input type="text" value="{{datosmilitares.rango}}" placeholder="escribe tu municipio" name="rango" required />
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Fecha Ingreso</h6>
-                        <input type="date" value="{{datosmilitares.fecha_ingreso}}" placeholder="escribe tu municipio" name="ingreso" />
+                        <input type="date" value="{{datosmilitares.fecha_ingreso}}" placeholder="escribe tu municipio" name="ingreso" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Ultimo Ascenso</h6>
-                        <input type="date" value="{{datosmilitares.ultimo_asenso}}" placeholder="escribe tu municipio" name="ultimo"/>
+                        <input type="date" value="{{datosmilitares.ultimo_asenso}}" placeholder="escribe tu municipio" name="ultimo" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Institucion</h6>
-                        <input type="text" value="{{datosmilitares.institucion}}" placeholder="escribe tu municipio" name="institucion"/>
+                        <input type="text" value="{{datosmilitares.institucion}}" placeholder="escribe tu municipio" name="institucion" required/>
                     </div>
                     <div class="pi-input pi-input-lg">
                         <h6>Correo</h6>
-                        <input type="text" value="{{personales.correo}}" placeholder="escribe tu municipio" name="correo"/>
+                        <input type="text" value="{{personales.correo}}" placeholder="escribe tu municipio" name="correo" required/>
                     </div>
-                    <button style="background-color: #050c86 ;" type="submit">Save</button>
+                    <button style="background-color: #030640 ;" type="submit">Save</button>
                 </form>
         </div></center>
     </div>

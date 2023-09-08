@@ -76,7 +76,7 @@ class SemestreModels(models.Model):
     # estudiante = models.ForeignKey(EstudiantesModels, related_name="estudoante_semestre_reverce", on_delete=models.CASCADE)
     carrera = models.ForeignKey('CarrerasModels', related_name="semestre_carrera", on_delete=models.CASCADE)
     semestre = models.PositiveIntegerField()
-    materia  =  models.ManyToManyField('MateriasModels', related_name="materia_semestres")
+    materia  =  models.ManyToManyField('MateriasModels', blank=True, related_name="materia_semestres")
     created = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -105,7 +105,7 @@ class SecionModels(models.Model):
     
 class MateriasModels(models.Model):
     carrera = models.ForeignKey('CarrerasModels', related_name="carrera_materia_reverce", on_delete=models.CASCADE)
-    semestre = models.ForeignKey(SemestreModels, related_name="materia_semestre_reverce", on_delete=models.CASCADE )
+    semestre = models.ForeignKey(SemestreModels, blank=True, related_name="materia_semestre_reverce", on_delete=models.CASCADE )
     nombre = models.CharField(max_length=50)
     profesor = models.ForeignKey(ProfesoresModels, blank=True , null=True, related_name='materia_reverce', on_delete=models.CASCADE)
     codigo = models.CharField(max_length=20)
@@ -183,7 +183,6 @@ class DatosPersonales(models.Model):
     siglas_escuela=models.CharField(max_length=75, blank=True, null=True)
     promocion=models.CharField(max_length=75, blank=True, null=True)
     matricula=models.CharField(max_length=20)
-    # fecha=models.DateField()
     fecha_nacimiento = models.DateField()
     lugar_nacimiento = models.CharField(max_length=100) 
     nacionalidad = models.CharField(max_length=20)
@@ -232,7 +231,7 @@ class DatosSiEsMilitar(models.Model):
         verbose_name_plural = "Datos Del Militar"
         
     def __str__(self):
-        return "hola"
+        return self.estudiante
     
     
     
@@ -282,5 +281,5 @@ class DatosFamiliares(models.Model):
         verbose_name_plural = "Datos De las familia"
         
     def __str__(self):
-        return self.estudiante.user.nombre
+        return self.estudiante
     

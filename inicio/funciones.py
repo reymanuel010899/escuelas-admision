@@ -8,9 +8,7 @@ def sacar_seciones(materia_id):
         return Seciones
     return
       
-        
 def sacar_secion_y_estudiantes(pk_secion, user):
-    # secion_id = request.GET.get('secion','')
     if pk_secion != '':
         secion = SecionModels.objects.get(id=pk_secion)
         estudiante = secion.estudiante.all()
@@ -23,7 +21,6 @@ def sacar_secion_y_estudiantes(pk_secion, user):
         return secion, estudiante, materia
 
 
-
 def buscar_y_añadir_alunnos(añadir_alunno, secion):
     if añadir_alunno != '':
         encontrado=EstudiantesModels.objects.filter(user__username__icontains = añadir_alunno ).first()
@@ -31,12 +28,6 @@ def buscar_y_añadir_alunnos(añadir_alunno, secion):
             secion.estudiante.add(encontrado)
             secion.save()
             return encontrado
-    
-    
-    
-    
-    
-    
     
     
 def calcular_indice(indice, estudiante):
@@ -48,33 +39,14 @@ def calcular_indice(indice, estudiante):
         return cantidad
             
 
-
-
-
 def avances_matriz(estudiante):
     cantidad = 0
-
-    
-    
     semestres = SemestreModels.objects.filter(carrera=estudiante.carrera).annotate(indice_semestral=Avg('materia__nota_reverce__nota', filter=Q(materia__nota_reverce__estudiate=estudiante)), creditos=Sum('materia__credito')).order_by('created')
-
     for sem in semestres:
         cantidad += sem.creditos
-      
-      
-      
-    # materias = MateriasModels.objects.filter(materia_semestres__id__in=id_semestre)
-    # for mat in materias:
-    #     id_materias.append(mat.id)
-
-
-
-    # notas = Notamodels.objects.filter(estudiate=estudiante, materia__id__in=id_materias).annotate(indices = Sum('nota',) )
-    
     return semestres, cantidad
 
       
-
 
 def sumar_creditos(semestres):
     pass
@@ -83,7 +55,7 @@ def sumar_creditos(semestres):
 def actualizar(request):
     user = request.user
     estudiante = EstudiantesModels.objects.filter(user=user).first()
-    
+    fecha_nacimiento = request.POST.get('nacimiento')
     nombre = request.POST.get('nombre')
     apellido = request.POST.get('apellido')
     correo = request.POST.get('correo')
@@ -96,18 +68,12 @@ def actualizar(request):
     rango = request.POST.get('rango')
     ingreso = request.POST.get('ingreso')
     ultimo = request.POST.get('ultimo')
-  
     institucion = request.POST.get('institucion')
-    print(rango, institucion)
-    
-
        
     user.nombre = nombre
     user.apellido = apellido
     user.correo = correo
-    user.save()
-    
-       
+    user.save() 
        
     datos_personales = DatosPersonales.objects.get(estudiante=estudiante)
     datos_personales.nacionalidad = nacionalidad
@@ -116,9 +82,8 @@ def actualizar(request):
     datos_personales.celular = celular
     datos_personales.tipo_sangre = samgre
     datos_personales.direcion = direcion
+    datos_personales.fecha_nacimiento = fecha_nacimiento
     datos_personales.save()
-    
-    
     
     datos_militar =  DatosSiEsMilitar.objects.get(estudiante=estudiante)
     datos_militar.rango = rango

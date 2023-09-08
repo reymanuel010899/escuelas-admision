@@ -4,8 +4,8 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-  font-family: "Poppins", sans-serif;
-  background: #fafafa;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background: #ffffff;
 }
 
 p {
@@ -56,12 +56,13 @@ a:focus {
   align-items: stretch;
 }
 
-#sidebar {
+#sidebar { 
   min-width: 250px;
   max-width: 250px;
-  background:linear-gradient(90deg, #030c2d, #ffffff);
+  background: #ffffff;
   color: #fff;
   transition: all 0.3s;
+ 
 }
 
 #sidebar.active {
@@ -70,7 +71,8 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background:linear-gradient(90deg, #030c2d, #ffffff);
+  background-color: rgb(3, 16, 50);
+
 }
 
 #sidebar ul.components {

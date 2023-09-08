@@ -5,21 +5,15 @@
 <h3 style="text-align: center;">Materias Inpartidas</h3>
 
 {% for mate in materias  %}
-    <span style="margin-left:15px ;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
+    <span style="margin-left:15px; position: absolute;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
 {% endfor %}
 <br><br>
 
 {% for sec in seciones %}
 {% if sec.materia.profesor.user == user %}
 <ul>
-    <li><span style="margin-left:15px ;"><a href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
+    <li style="color: blue;"><span style="margin-left:15px ; color: blue;"><a style="color:blue;" href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
 </ul>
 {% endif %}
-
 {% endfor %}
-
-
-
-
-
 {% endblock content %}
