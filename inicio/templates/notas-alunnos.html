@@ -6,7 +6,7 @@
 <table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%;border-collapse:collapse;">
     <tbody>
         <td  class="headtabl1" align="left" colspan="9" style="background-color:AliceBlue;"> <span ><h4> {% if promedio %} Promedio:   {{promedio|truncatechars:6}}{% else %} {% endif %} </h4></span>   <span><h4></h4>
-        <tr  style="background-color: rgb(3, 16, 50); color: aliceblue;">
+        <tr  style="background-color: #002d62; color: aliceblue;">
             <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Código Asignatura</th><th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Asignatura</th><th class="centro" scope="col">Calificacion Final</th><th class="centro" scope="col">Calificación</th>
         </tr>
         {% for sem in semes %}

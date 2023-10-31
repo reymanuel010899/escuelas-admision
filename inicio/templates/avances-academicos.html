@@ -6,7 +6,7 @@
 
     <table cellspacing="0" rules="all" class="am_table table table-hover table-nomargin" border="1" id="cphDashboard_grvAduditoria" style="width:100%; border-collapse:collapse;">
     <tbody>
-    <tr style="background-color: rgb(3, 16, 50); color: antiquewhite;">
+    <tr style="background-color: #002d62; color: antiquewhite;">
         <th class="centro" scope="col">Semestre</th><th class="centro" scope="col">Codigo Asignatura</th><th class="centro" scope="col">Asignatura</th><th>creditos</th> <th class="centro" scope="col">Profesor</th><th class="centro" scope="col">Calificación</th>
     </tr>
     
@@ -19,7 +19,7 @@
         <tr  style="background-color:rgb(240, 240, 255);  ">
             <td  class="centro"  align="center">{{materia.semestre}} </td>
             <td> {{mate.codigo}} </td>
-            <td>{{mate.nombre}} </td><td>{{mate.credito}} </td> {% for b in mate.nota_reverce.all %}{% if b.estudiate.user == user %}<td> {% if b.materia.profesor %} {{b.materia.profesor}} {% else %}  {% endif %} </td>{% if b.nota >= 70 %}<td style="background-color: rgb(1, 1, 51); color: aliceblue;" > {{b}} </td> {% else %}  <td style="background-color: rgb(138, 7, 7); color: aliceblue;">{{b}}</td> {% endif %} {% endif %}{% endfor %} </td>  
+            <td>{{mate.nombre}} </td><td>{{mate.credito}} </td> {% for b in mate.nota_reverce.all %}{% if b.estudiate.user == user %}<td> {% if b.materia.profesor %} {{b.materia.profesor}} {% else %}  {% endif %} </td>{% if b.nota >= 70 %}<td style="background-color: #002d62; color: aliceblue;" > {{b}} </td> {% else %}  <td style="background-color: rgb(138, 7, 7); color: aliceblue;">{{b}}</td> {% endif %} {% endif %}{% endfor %} </td>  
         </tr>
         {% endfor %}
         <td>

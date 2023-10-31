@@ -8,13 +8,11 @@
     <title>Escuelas</title>
     <link rel="stylesheet" href=" {% static 'css/estiles.css' %} ">
 </head>
-<body>
- 
-    <div class="container" style="background-color:rgb(3, 16, 50);">
-     
-        <div class="screen" style="height: 120%;">
+<body style="background-color: #002d62;">
+    <img style="margin-left: 35%; width: 520px; margin-top:75px;" src="{% static 'images/logo.png' %} " alt="">
+    <div class="container" style="background-color:#002d62;">
+        <div class="screen" style="height: 120%; margin-left: 35%; margin-top: 0px;">
             <div class="screen__content" style="height: 120%;">
-
                 <h3 style="margin-left: 2%;">Escuelas</h3>
                 {% for escuela in escuelas  %}
                     <a href="{% url 'users_app:login' escuela.pk  %} "  class="button login__submit">

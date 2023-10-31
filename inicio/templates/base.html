@@ -15,8 +15,9 @@
             <div id="wrapper"> 
             <div class="wrapper" style="display: flex; ">
              <!-- Sidebar  --> 
-             <nav id="sidebar" style=" background-color: rgb(3, 16, 50);   "> 
-                <div class="sidebar-header" style="background-color: rgb(3, 16, 50);"> 
+             <nav id="sidebar" style=" background-color: #002d62; position: fixed; height: 100%;   "> 
+    
+                <div class="sidebar-header" style="background-color: #002d62;"> 
                     <h5 style="text-align: center; margin-bottom: 15px;">{{user.nombre}} </h5>
                         <img id="portada" style="border-radius: 15px; max-width: 100PX; margin-left: 25%;  max-height:10%; "  src="{{user.avatar.url}} "/>
                      <h5 style="text-align: center; margin-top: 15px;">{{user.username}}</h5>
@@ -71,20 +72,21 @@
                 </nav>
                 
                 <!-- Page Content  -->
-                 <div id="content" style="background-color:blak">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" width: 100%; background-color: rgb(222, 46, 46);border-radius: 5px;">
-                     <div class="container-fluid" style="text-align: center;display: flex;">
-                        <span>
-                            <button style="background-color: #d4d3dc; display: inline-block;" type="button" id="sidebarCollapse" class="btn btn-info">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                                </svg>
-                            </button>
-                        </span>
-                        <span style=" display: flex; justify-content: center; margin: auto;"><h2 style="align-self:center;">{{escuela.escuela.nombre|title}}</h2></span>
-                     
-                    </div> 
-                </nav> 
+                 <div id="content" style="">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 1; width: 100%; background-color: rgb(222, 46, 46);border-radius: 5px;">
+                    <div class="container-fluid" style="text-align: center;display: flex;">
+                       <span>
+                           <button style="background-color: #d4d3dc; display: inline-block;" type="button" id="sidebarCollapse" class="btn btn-info">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                               </svg>
+                           </button>
+                       </span>
+                       <span style=" display: flex; justify-content: center; margin: auto;"><h2 style="align-self:center;">{{escuela.escuela.nombre|title}}</h2></span>
+                    
+                   </div> 
+                </nav>
+                   
              
                              
                              
@@ -97,13 +99,30 @@
                             
                             
                         
-    </div>     
+                </div>     
 </body>
         <script src="https://kit.fontawesome.com/62ea397d3a.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">   </script> 
         <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>    
         <Script>
+            let content = document.getElementById("content")
+            content.style.marginLeft = "250PX"
             $(document).ready(function(){ $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); }); }); 
+            document.querySelector("#sidebarCollapse").addEventListener("click", (even)=>{
+              let content = document.getElementById("content")
+              let sidebar = document.querySelector("#sidebar")
+              if (sidebar.classList.contains("active")){
+                content.style.marginLeft = "250PX"
+              }else{
+                content.style.marginLeft = "0PX"
+      
+              }
+             
+             
+
+
+            })
+
         </Script> 
 </html>

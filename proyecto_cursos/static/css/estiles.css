@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color:  #000000;
+  background-color:  #002746;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -20,17 +20,20 @@ body {
 }
 
 .screen {
-  background: linear-gradient(90deg, #0f0b30, #000000);
+  margin: auto;
+  background: #002d62;
   position: relative;
   height: 600px;
-  width: 360px;
+  
   box-shadow: 0px 0px 30px rgb(3, 16, 50);
 }
 
 .screen__content {
   z-index: 1;
   position: relative;
+  margin: 0 10px;
   height: 100%;
+  width: 500px;
 }
 
 .screen__background {
@@ -61,7 +64,7 @@ body {
 .screen__background__shape2 {
   height: 220px;
   width: 220px;
-  background: #0321029d;
+  background: #161648;
   top: -172px;
   right: 0;
   border-radius: 32px;
@@ -70,7 +73,7 @@ body {
 .screen__background__shape3 {
   height: 540px;
   width: 190px;
-  background: linear-gradient(270deg, #5d54a4, #6a679e);
+  background: #161648;
   top: -24px;
   right: 0;
   border-radius: 32px;
@@ -79,7 +82,7 @@ body {
 .screen__background__shape4 {
   height: 400px;
   width: 200px;
-  background: #7e7bb9;
+  background: #161648;
   top: 420px;
   right: 50px;
   border-radius: 60px;
@@ -99,7 +102,7 @@ body {
 .login__icon {
   position: absolute;
   top: 30px;
-  color: #7875b5;
+  color: #161648;
 }
 
 .login__input {
@@ -176,4 +179,16 @@ body {
 
 .social-login__icon:hover {
   transform: scale(1.5);
+}
+
+@media screen and (max-width: 768px){
+  .screen {
+    background-color: #fff;
+  }
+
+}
+
+.content-width {
+  background-color: #140bc1;
+  margin-left: 250px;
 }
