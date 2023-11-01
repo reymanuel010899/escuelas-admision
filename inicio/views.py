@@ -88,8 +88,6 @@ def alunnos_seciones(request, pk):
       materia_id = request.GET.get('materia','')
       seciones =  sacar_seciones(materia_id)
   
-
-
       estudiantes_por_secion = SecionModels.objects.get(id=pk)
       materia = MateriasModels.objects.get(cesion_reverce__id=pk, profesor=estudiantes_por_secion.materia.profesor)
       estudiante = estudiantes_por_secion.estudiante.all()
@@ -134,27 +132,48 @@ def alunnos_seciones(request, pk):
                   if participacion:
                      nota.participacion = participacion
                      nota.save()
+                     actualizar_nota_final(nota, request, participacion=participacion)
                   elif asistencia:
                      nota.asistencia = asistencia
                      nota.save()
+                     actualizar_nota_final(nota, request, asistencia=asistencia)
                   elif parcial:
                      nota.parcial = parcial
                      nota.save()
+                     actualizar_nota_final(nota, request, parcial=parcial)
                   elif final_ex:
                      nota.filnal_ex = final_ex
                      nota.save()
-                  elif nota_final:
-                     nota.nota_final = nota_final
-                     nota.save() 
-                     nota_fix, crd = Notamodels.objects.get_or_create(materia=nota.materia, estudiate=nota.alunno, defaults={'nota':nota.nota_final})
-                     nota_fix.nota = nota.nota_final
-                     nota_fix.save()
-                      
+                     actualizar_nota_final(nota, request, final_ex=final_ex)
+                  
+
          return redirect('inicio_app:seciones-alunnos', pk=pk) 
    else:
       return redirect('inicio_app:inicio')
  
    
+
+
+def actualizar_nota_final(nota, request, **kwargs):
+  
+   if kwargs.get("participacion"):
+      print(kwargs)
+      nota.nota_final += nota.participacion
+   if kwargs.get("asistencia"):
+      nota.nota_final += nota.asistencia
+   if kwargs.get("parcial"):
+      nota.nota_final += nota.parcial
+   if kwargs.get("final_ex"):
+      nota.nota_final += nota.final_ex
+   # nota.nota_final =  nota.participacion + nota.asistencia or 0 + nota.parcial or 0 + nota.filnal_ex or 0
+   nota.save() 
+
+
+
+   nota_fix, crd = Notamodels.objects.get_or_create(materia=nota.materia, estudiate=nota.alunno, defaults={'nota':nota.nota_final})
+   nota_fix.nota = nota.nota_final
+   nota_fix.save()
+ 
    
 def seccines_ultimas(request):
    user = request.user
