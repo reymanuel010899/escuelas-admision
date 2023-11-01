@@ -55,39 +55,34 @@ def sumar_creditos(semestres):
 def actualizar(request):
     user = request.user
     estudiante = EstudiantesModels.objects.filter(user=user).first()
-    fecha_nacimiento = request.POST.get('nacimiento')
-    nombre = request.POST.get('nombre')
-    apellido = request.POST.get('apellido')
-    correo = request.POST.get('correo')
-    nacionalidad = request.POST.get('nacionalidad')
-    civil = request.POST.get('estado-civil')
-    cedula = request.POST.get('cedula')
-    celular = request.POST.get('celular')
-    samgre = request.POST.get('samgre')
-    direcion = request.POST.get('direcion')
-    rango = request.POST.get('rango')
-    ingreso = request.POST.get('ingreso')
-    ultimo = request.POST.get('ultimo')
-    institucion = request.POST.get('institucion')
-       
-    user.nombre = nombre
-    user.apellido = apellido
-    user.correo = correo
-    user.save() 
-       
-    datos_personales = DatosPersonales.objects.get(estudiante=estudiante)
-    datos_personales.nacionalidad = nacionalidad
-    datos_personales.estado_civil = civil
-    datos_personales.no_cedula = cedula
-    datos_personales.celular = celular
-    datos_personales.tipo_sangre = samgre
-    datos_personales.direcion = direcion
-    datos_personales.fecha_nacimiento = fecha_nacimiento
-    datos_personales.save()
+    actualizar_user(request, user)
+    actualizar_datos_personales(request, estudiante)
+    actualizar_datos_militar(request, estudiante)
     
+  
+def actualizar_user(request, user):
+    user.nombre = request.POST.get('nombre')
+    user.apellido = request.POST.get('apellido')
+    user.correo = request.POST.get('correo')
+    user.save()
+
+
+def actualizar_datos_personales(request, estudiante):
+    datos_personales = DatosPersonales.objects.filter(estudiante=estudiante).first()
+    datos_personales.nacionalidad = request.POST.get('nacionalidad')
+    datos_personales.estado_civil = request.POST.get('estado-civil')
+    datos_personales.no_cedula = request.POST.get('cedula')
+    datos_personales.celular = request.POST.get('celular')
+    datos_personales.tipo_sangre = request.POST.get('samgre')
+    datos_personales.direcion = request.POST.get('direcion')
+    datos_personales.fecha_nacimiento = request.POST.get('nacimiento')
+    datos_personales.save()
+
+
+def actualizar_datos_militar(request, estudiante):
     datos_militar =  DatosSiEsMilitar.objects.get(estudiante=estudiante)
-    datos_militar.rango = rango
-    datos_militar.fecha_ingreso = ingreso
-    datos_militar.ultimo_asenso = ultimo
-    datos_militar.institucion = institucion
+    datos_militar.rango = request.POST.get('rango')
+    datos_militar.fecha_ingreso = request.POST.get('ingreso')
+    datos_militar.ultimo_asenso = request.POST.get('ultimo')
+    datos_militar.institucion = request.POST.get('institucion')
     datos_militar.save()

@@ -10,8 +10,6 @@ from django.urls import reverse_lazy
 from .funciones import sacar_seciones, avances_matriz, sumar_creditos, actualizar
       
 
-
-
 @login_required(login_url='users_app:escuelas')
 def home_views(request):
    return render(request, 'inicio.html')
@@ -31,10 +29,7 @@ def avances_academicos(request):
       notas, promedio, id_semestre = Notamodels.objects.sacar_promedio(estudiante)
       # materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('created')
       prueba , otros = avances_matriz(estudiante)
-      
-      
    return render(request, 'avances-academicos.html', {'semestres':prueba, 'promedio':promedio, 'cantidad':otros })
-
 
 
 @login_required(login_url='users_app:escuelas')
@@ -42,13 +37,11 @@ def acerca_scholl(request):
    return render(request, 'acerca-scholl.html')
 
 
-
-
 @login_required(login_url='users_app:escuelas')
 def notas_del_alunno(request):
    user = request.user
    estudiante = EstudiantesModels.objects.get(user=user)
-   prueba, otros = avances_matriz(estudiante)
+   avances_matriz(estudiante)
    
    
    
@@ -132,19 +125,19 @@ def alunnos_seciones(request, pk):
                   if participacion:
                      nota.participacion = participacion
                      nota.save()
-                     actualizar_nota_final(nota, request, participacion=participacion)
+                     actualizar_nota_final(nota)
                   elif asistencia:
                      nota.asistencia = asistencia
                      nota.save()
-                     actualizar_nota_final(nota, request, asistencia=asistencia)
+                     actualizar_nota_final(nota)
                   elif parcial:
                      nota.parcial = parcial
                      nota.save()
-                     actualizar_nota_final(nota, request, parcial=parcial)
+                     actualizar_nota_final(nota)
                   elif final_ex:
                      nota.filnal_ex = final_ex
                      nota.save()
-                     actualizar_nota_final(nota, request, final_ex=final_ex)
+                     actualizar_nota_final(nota)
                   
 
          return redirect('inicio_app:seciones-alunnos', pk=pk) 
@@ -154,26 +147,19 @@ def alunnos_seciones(request, pk):
    
 
 
-def actualizar_nota_final(nota, request, **kwargs):
-  
-   if kwargs.get("participacion"):
-      print(kwargs)
-      nota.nota_final += nota.participacion
-   if kwargs.get("asistencia"):
-      nota.nota_final += nota.asistencia
-   if kwargs.get("parcial"):
-      nota.nota_final += nota.parcial
-   if kwargs.get("final_ex"):
-      nota.nota_final += nota.final_ex
-   # nota.nota_final =  nota.participacion + nota.asistencia or 0 + nota.parcial or 0 + nota.filnal_ex or 0
-   nota.save() 
+def actualizar_nota_final(nota):
+   participacion = nota.participacion if nota.participacion is not None else 0
+   asistencia = nota.asistencia if nota.asistencia is not None else 0
+   parcial = nota.parcial if nota.parcial is not None else 0
+   filnal_ex = nota.filnal_ex if nota.filnal_ex is not None else 0
+
+   nota.nota_final = participacion + asistencia + parcial + filnal_ex
+   if nota.nota_final > 100:
+        nota.nota_final = 100
+        
+   nota.save()
 
 
-
-   nota_fix, crd = Notamodels.objects.get_or_create(materia=nota.materia, estudiate=nota.alunno, defaults={'nota':nota.nota_final})
-   nota_fix.nota = nota.nota_final
-   nota_fix.save()
- 
    
 def seccines_ultimas(request):
    user = request.user
@@ -186,6 +172,6 @@ def seccines_ultimas(request):
 
 def actualizar_datos(request):
    if request.method == "POST":
-      actualizado = actualizar(request)
+      actualizar(request)
       return redirect('inicio_app:inicio')
    return render(request, 'actualizar.html')

@@ -59,7 +59,6 @@ def cerrar_seccion(request):
 
 def registrar_alunnos(request, pk):
     form_carreras = DatosForms(pk,  initial={"nombre":None, "Currently":None})
-
     if request.method == 'POST':
         username = request.POST.get('matricula')
         gmail = request.POST.get('correo')
@@ -92,7 +91,7 @@ def registrar_alunnos(request, pk):
         estudiante = EstudiantesModels.objects.create(user=user, carrera=carrera, escuela=escuela, rango=rango, cedula=cedula  )
         form_sector = RegistrosForm(request.POST)
         form_historia = HistorialEducativoForm(request.POST)
-        registro = registrar_datos(request, estudiante, form_is_militar, form_sector, form_historia)
+        registrar_datos(request, estudiante, form_is_militar, form_sector, form_historia)
         
         
         

@@ -3,6 +3,9 @@ from .models import User, DirectorModels, EscuelasModels,  EstudiantesModels, Pr
 
 
 # Register your models here.
+class AlumnoAdmin(admin.ModelAdmin):
+
+    list_display = ('id', 'codigo', 'materia' ) 
 
 admin.site.register(User)
 admin.site.register(DirectorModels)
@@ -10,7 +13,7 @@ admin.site.register(EscuelasModels)
 admin.site.register(EstudiantesModels)
 admin.site.register(ProfesoresModels)
 admin.site.register(SemestreModels)
-admin.site.register(SecionModels)
+admin.site.register(SecionModels, AlumnoAdmin)
 admin.site.register(MateriasModels)
 admin.site.register(Notamodels)
 admin.site.register(CarrerasModels)

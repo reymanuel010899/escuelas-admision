@@ -2,27 +2,30 @@
 
 
 {% block content %}
-
+<div style="background-color: #e6e6ff; height: 160px; display: inline-block; padding: 20px; margin-left:65px; position: relative;">
+    <h5 style="text-align: center;">Materias</h5>
 {% for mate in materia %}
-    <span onmouseover="cambiarcolor(this)"  onmouseout="cambiar(this)"   style="margin-left:15px ;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
+    <span onmouseover="cambiarcolor(this)"  onmouseout="cambiar(this)"   style=" color: rgb(0, 0, 0); margin: 3px;"><a href="?materia={{mate.id}} ">{{mate}}</a></span>
 {% endfor %}
 <br><br>
 {% for sec in seciones %}
 {% if sec %}
-<span style="margin-left: 15px;">secion:</span>
+<span style="margin-left: 15px; ">secion:</span>
 {% if sec.materia.profesor.user == user %}
 <ul>
-    <li id="cambiarcolors" onmouseover="cambiarcolor(this)" onmouseout="cambiar(this)"><span style="margin-left:15px ;"><a href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
+    <li id="cambiarcolors" onmouseover="cambiarcolor(this)" onmouseout="cambiar(this)"><span style="margin-left:5px ;"><a href=" {% url 'inicio_app:seciones-alunnos' sec.id %}">{{sec}}</a></span></li>
 </ul>
 {% endif %}
 {% endif %}
 {% endfor %}
-<form  method="GET">
-    <input placeholder="matricula ..." name="buscar" type="text">
-    <button class="btn btn-outline-primary"  type="submit">Añadir</button>
+</div>
+
+<form  method="GET" style="margin-left:5%; display:inline-block; background-color:#002d62; top:180px; padding: 20px; position: absolute;"> 
+    <input placeholder = "agregar matricula" name="buscar" type="text" style="width: 500px;">
+    <button class="btn btn-outline-primary" style="margin-left: 10px; color: #e6e6ff; height: 30px; position: relative;"  type="submit">Añadir</button>
 </form>
 <br><br><br>
-<table style="width: 100%; margin: auto;" >
+<table style="width:90%; margin: auto;" >
     <tr style="background-color:  #002d62; color: rgb(255, 255, 255);">
         <th class="centro" scope="col">Alunnos</th><th class="centro" scope="col">Asistencia</th>
         <th class="centro" scope="col">Participacion</th><th class="centro" scope="col">Parcial</th>
@@ -30,7 +33,7 @@
     </tr>
     {% for estud in estudiantes %}
     <form action="?alunno={{estud.id}}" method="POST">{% csrf_token %}
-        <tr style="background-color: rgb(230, 230, 255); color: rgb(0, 0, 0); border: none;">
+        <tr style="background-color: rgb(230, 230, 255); color: rgb(0, 0, 0); border: none;"> 
             <th class="centro" scope="col">{{estud.user.nombre}}</th>
             <th class="centro"   scope="col">{{form.asistencia}}  </th>
             <th class="centro" scope="col">{{form.participacion}}</th>
@@ -48,9 +51,14 @@
     </tr>
 {% for estud in notas %}
 <form action="?alunno={{estud.id}}" method="POST">{% csrf_token %}
-<tr style="background-color: rgb(230, 230, 255); color: rgb(0, 0, 0); border: none;">
-    <th class="centro" scope="col">{{estud.alunno.user.nombre}}</th><th class="centro"   scope="col"> <input   value="{{estud.asistencia}}" style="border-radius: 5px;" readonly type="text"></th><th class="centro" scope="col"><input type="text" value="{{estud.participacion}}" readonly style="border-radius: 5px;"></th><th class="centro" scope="col"> <input type="text" value="{{estud.parcial}}" readonly style="border-radius: 5px;"> </th><th class="centro" scope="col"><input type="text" value="{{estud.filnal_ex}}" readonly style="border-radius: 5px;"></th> <th class="centro"   scope="col"> <input value="{{estud.nota_final}}" style="border-radius: 5px;" readonly type="text"></th>
-</tr>
+    <tr style="background-color: rgb(230, 230, 255); color: rgb(0, 0, 0); border: none;">
+        <th class="centro" scope="col">{{estud.alunno.user.nombre}}</th>
+        <th class="centro"   scope="col"> <input   value="{{estud.asistencia|default:''}}" style="border-radius: 5px;" readonly type="text"></th>
+        <th class="centro" scope="col"><input type="text" value="{{estud.participacion|default:''}}" readonly style="border-radius: 5px;"></th>
+        <th class="centro" scope="col"> <input type="text" value="{{estud.parcial|default:''}}" readonly style="border-radius: 5px;"> </th>
+        <th class="centro" scope="col"><input type="text" value="{{estud.filnal_ex|default:''}}" readonly style="border-radius: 5px;"></th>
+        <th class="centro"   scope="col"> <input value="{{estud.nota_final|default:''}}" style="border-radius: 5px;" readonly type="text"></th>
+    </tr>
 </form>
 {% endfor %}
 </table>

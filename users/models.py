@@ -243,13 +243,11 @@ class HistorialEducativo(models.Model):
     lugar_basico = models.CharField(max_length=50, blank=True, null=True)
     finalizacion_basico =models.DateField()
     grado_basico =models.CharField(max_length=15, blank=True, null=True)
-
     nivel_bachiller =models.CharField(max_length=50, blank=True, null=True)
     institucion_escuelas_bachiller =models.CharField(max_length=50, blank=True, null=True)
     lugar_bachiller = models.CharField(max_length=50, blank=True, null=True)
     finalizacion_bachiller = models.DateField()
     grado_bachiller = models.CharField(max_length=15, blank=True, null=True)
-
     nivel_uni = models.CharField(max_length=50, blank=True, null=True)
     institucion_escuelas_uni = models.CharField(max_length=50, blank=True, null=True)
     lugar_uni = models.CharField(max_length=50, blank=True, null=True)
