@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -249,4 +249,768 @@
     </div>
     
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1 class="text-center mt-6 text-3xl ">Registrar Estudiante</h1>
+    <h1 class="text-center my-2 text-2xl">Datos Personales</h1>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="container px-6 md:px-12 mx-auto mt-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2">
+                <!-- Siglas Escuelas -->
+                <div>
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="sigla-escuela" id="floating_siglas"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_siglas"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Siglas
+                            Escuela</label>
+                    </div>
+
+                    <!-- fin de siglas escuelas -->
+                </div>
+                <!-- Promoción -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="promocion" id="floating_promocion"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_siglas"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Promoción</label>
+                    </div>
+
+
+                </div>
+                <!-- fin Promoción -->
+                <div class="">
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="matricula_number" id="floating_matricula"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_siglas"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Matrícula</label>
+                    </div>
+                </div>
+                <!-- nombre -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="nombres" id="floating_nombre"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_siglas"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
+                    </div>
+
+                </div>
+                <!-- fin nombre -->
+                <!-- apellido -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="apellido" id="floating_apellido"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_apellido"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido</label>
+                    </div>
+
+                </div>
+                <!-- fin apellido -->
+                <!-- fecha -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="date" name="fecha-nacimiento" id="floating_fecha"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_fecha"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Fecha</label>
+                    </div>
+
+
+                </div>
+                <!-- fin fecha -->
+                <!-- lugar de nacimiento -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="lugar-nacimiento" id="floating_nacimiento"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_nacimiento"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Lugar
+                            de nacimiento</label>
+                    </div>
+
+                </div>
+                <!-- fin de lugar de nacimiento -->
+                <!-- nacionalidad -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="nacionalidad" id="floating_fecha"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_nacionalidad"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nacionalidad</label>
+                    </div>
+
+                </div>
+                <!-- fin nacionalidad -->
+                <!-- provincia -->
+                <div class="relative z-0 w-full mb-6 group md:pr-4">
+                    <label for="Provincia"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Provincia</label>
+                    <select id="Provincia" name="provincia"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        required>
+                        <option>Azua</option>
+                        <option>Distrito Nacional</option>
+                        <option>San Juan</option>
+                        <option>Punta Cana</option>
+                    </select>
+                </div>
+
+                <!-- Municipio de procedencia -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="municipio" id="floating_procedencia"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_nacionalidad"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Municipio
+                            de Procedencia</label>
+                    </div>
+
+
+                </div>
+                <!-- fin de Municipio de Procedencia -->
+                <!-- sección -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="secion" id="floating_seccion"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_seccion"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sección</label>
+                    </div>
+
+
+                </div>
+                <!-- Fin de sección -->
+                <!--  -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="estado-civil" id="floating_civil"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_civil"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Estado
+                            Civil</label>
+                    </div>
+
+                </div>
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="cedula" id="floating_cedula"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_cedula"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">No.
+                            de Cédula/ Pasaporte</label>
+                    </div>
+
+
+
+                </div>
+                <!-- telefono residencial -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="tel" name="telefono-res" id="floating_telofono"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_telefono"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono
+                            Res. (ejemplo: 809-301-2103)</label>
+                    </div>
+
+
+
+
+                </div>
+                <!-- fin telefono residencial -->
+                <!-- Telefono Oficina -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="tel" name="telefono-ofi" id="floating_oficina"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_cedula"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono
+                            Oficina (ejemplo: 809-301-2103)</label>
+                    </div>
+
+                </div>
+                <!-- Fin telefono oficina -->
+
+
+
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="direcion" id="floating_direccion"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_cedula"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Dirección</label>
+                    </div>
+
+
+                </div>
+                <!-- celular -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="tel" name="celular" id="floating_celular"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_celular"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular
+                            (ejemplo: 809-301-2103)</label>
+                    </div>
+
+                </div>
+
+                <!-- fin celular -->
+
+                <!-- lugar de trabajo -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="lugar-trabajo" id="floating_trabajo"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_trabajo"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Lugar
+                            de Trabajo</label>
+                    </div>
+
+                </div>
+
+                <!-- fin lugar de trabajo -->
+                <!-- alguna discapacidad -->
+                <div class="relative z-0 w-full mb-6 group md:pr-4">
+                    <label for="Provincia"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alguna
+                        Discapacidad</label>
+                    <select id="Provincia" name="discapasidad"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        required>
+                        <option value="" disabled> selecciona una opción</option>
+                        <option>Si</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <!-- fin de discapacidad -->
+                <!-- tipo de sangre -->
+                <div class="relative z-0 w-full mb-6 group md:pl-2">
+                    <label for="Provincia"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tipo
+                        de Sangre</label>
+                    <select id="Provincia" name="sangre"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        required>
+                        <option value="" disabled>Selecciona una opción</option>
+                        <option>A positivo (A+)</option>
+                        <option>A negativo (A-)</option>
+                        <option>B positivo (B+)</option>
+                        <option>B negativo (B-)</option>
+                        <option>AB positivo (AB+)</option>
+                        <option>AB negativo (AB-)</option>
+                        <option>O positivo (O+)</option>
+                        <option>O negativo (O-)</option>
+                    </select>
+                </div>
+
+                <!-- Fin de tipo de sangre -->
+                <!-- funcion que desempeña -->
+                <div class="">
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="funcion-desenpeña" id="floating_funcion"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_funcion"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Función
+                            que desempeña</label>
+                    </div>
+                </div>
+                <!-- fin función que desempeña -->
+                <!-- sexo -->
+                <div class="relative z-0 w-full mb-6 group md:pl-2">
+                    <label for="Provincia"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sexo</label>
+                    <select id="Provincia" name="sexo"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        required>
+                        <option value="" disabled>Selecciona una opción</option>
+                        <option>Masculino (M)</option>
+                        <option>Femenino (F)</option>
+                    </select>
+                </div>
+                <!-- fin sexo -->
+
+                <div>
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="email" name="correo" id="floating_email"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_email"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo
+                            Electrónico</label>
+                    </div>
+
+
+                </div>
+                <!-- Eres alergico -->
+                <div>
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="alergico" id="floating_alergico"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_alergico"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">¿A
+                            qué es alérgico?</label>
+                    </div>
+
+
+                </div>
+                <!-- fin eres alergico -->
+                <!-- militar -->
+                <div class="relative z-0 w-full mb-6 group md:pr-4">
+                    <label for="Militar"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">¿Eres
+                        Militar?</label>
+                    <select id="militar"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        required>
+                        <option value="" disabled>Selecciona una opción</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                        -- {{personales.militar}}
+                    </select>
+                </div>
+
+                <!-- fin militar -->
+                <div></div>
+
+            </div>
+        </div>
+
+        <div id="formulario2" style="display: none;">
+            <h1 class="text-3xl text-center">Datos Academicos</h1>
+            <div class="container px-6 md:px-12 mx-auto mt-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2">
+                    <!-- rango -->
+                    <div class="">
+
+                        <div class="relative z-0 w-full mb-6 group md:pr-4">
+                            <input type="text" name="rango" id="floating_rango"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "/>
+                            <label for="floating_rango"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Rango</label>
+                        </div>
+
+                    </div>
+                    <!-- fin rango -->
+
+                    <!-- Institución -->
+                    <div class="">
+
+                        <div class="relative z-0 w-full mb-6 group md:pl-2">
+                            <input type="text" name="institucion" id="floating_institucion"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="floating_institucion"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Institución</label>
+                        </div>
+
+
+                    </div>
+
+                    <!-- fin institución -->
+                    <!-- fecha de ingreso  -->
+                    <div class="">
+
+                        <div class="relative z-0 w-full mb-6 group md:pr-4">
+                            <input type="date" name="fecha-ingreso" id="floating_fechaingreso"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="floating_fechaingreso"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Fecha
+                                de ingreso</label>
+                        </div>
+
+                    </div>
+                    <!-- fin fecha de ingreso -->
+                    <!-- fecha de ascenso -->
+                    <div class="">
+
+                        <div class="relative z-0 w-full mb-6 group md:pl-2">
+                            <input type="date" name="ultimo-ascenso" id="floating_fechaascenso"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "  />
+                            <label for="floating_fechaascenso"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ultimo
+                                Ascenso</label>
+                        </div>
+
+
+                    </div>
+                    <!-- fin fecha de ascenso -->
+                    <!-- Bachiller  -->
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <label for="bachillerato"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">¿Realizó
+                            el Bachillerato?</label>
+                        <select id="bachillerato" name="bachiller"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            >
+                            <option value="" disabled>Selecciona una opción</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <!-- fin bachiller  -->
+                    <!-- centro educativo -->
+                    <div>
+
+                        <div class="relative z-0 w-full mb-6 group md:pl-2">
+                            <input type="text" name="nombre-educativo" id="floating_fechacentro"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "/>
+                            <label for="floating_fechacentro"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
+                                Centro Educativo</label>
+                        </div>
+
+
+                    </div>
+                    <!-- fin centro educativo -->
+                    <!-- sector educativo -->
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <label for="sector"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sector
+                            Educativo</label>
+                        <select id="educativo"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            required>
+                            <option value="" disabled>Selecciona una opción</option>
+                            <option value="">Publico</option>
+                            <option value="">Privado</option>
+                            -- {{registro.sector_educativo}}
+                        </select>
+                    </div>
+                    <!-- fin sector educativo -->
+                    <!-- idioma -->
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <label for="idioma"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Idioma
+                            que dominia</label>
+                        <select id="idioma" name="idiomas"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            required>
+                            <option value="" disabled>Selecciona una opción</option>
+                            <option value="">Ingles</option>
+                            <option value="">Frances</option>
+                            <option value="">Frances</option>
+                        </select>
+                        <!-- fin idioma -->
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fin del siguiente formulario 2 -->
+
+          <!-- inicio de la tabla -->
+          <h1 class="text-center text-3xl my-6">Historial Educativo</h1>
+          <div class="flex flex-col">
+              <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                      <div class="overflow-hidden">
+                          <table class="min-w-full text-left text-sm font-light">
+                              <thead class="border-b font-medium dark:border-neutral-500">
+                                  <tr>
+                                      <th scope="col" class="px-6 py-4">Nivel</th>
+                                      <th scope="col" class="px-6 py-4">Institución</th>
+                                      <th scope="col" class="px-6 py-4">Lugar</th>
+                                      <th scope="col" class="px-6 py-4">Finalización</th>
+                                      <th scope="col" class="px-6 py-4">Grado</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- primera fila -->
+                                  <tr
+                                      class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.nivel}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.institucion_escuelas}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.lugar}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Finalización" class="w-full px-2 py-1">
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Grado" class="w-full px-2 py-1">
+                                      </td>
+                                  </tr>
+                                  <!-- fin de primera fila  -->
+                                  <!-- segunda fila -->
+                                  <tr
+                                      class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.nivel}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.institucion_escuelas}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.lugar}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Finalización" class="w-full px-2 py-1">
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Grado" class="w-full px-2 py-1">
+                                      </td>
+                                  </tr>
+  
+                                  <!-- fin segunda fila -->
+                                  <!-- tercera fila -->
+                                  <tr
+                                      class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.nivel}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.institucion_escuelas}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          {{historialeducatifoform.lugar}}
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Finalización" class="w-full px-2 py-1">
+                                      </td>
+                                      <td class="whitespace-nowrap px-6 py-4">
+                                          <input type="text" placeholder="Grado" class="w-full px-2 py-1">
+                                      </td>
+                                  </tr>
+                                  <!-- fin tercera fila -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- fin de la tabla -->
+            <!-- cuarto formulario -->
+        <h1 class="text-center text-3xl">Datos familiares</h1>
+        <div class="container px-6 md:px-12 mx-auto mt-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2">
+                <!-- padre -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="padre" id="floating_padre"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_padre"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Padre</label>
+                    </div>
+
+                </div>
+                <!-- /padre -->
+                <!-- madre -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="madre" id="floating_madre"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_madre"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Madre</label>
+                    </div>
+
+                </div>
+                <!-- /madre -->
+                <!-- Esposa o esposo -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="esposa" id="floating_esposa"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_esposa"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Esposa
+                            o Esposo</label>
+                    </div>
+
+                </div>
+                <!-- /esposa o esposo -->
+                <!-- hijos -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="text" name="hijos" id="floating_hijos"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_hijos"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Hijos</label>
+                    </div>
+
+                </div>
+                <!-- /hijos -->
+                <!-- telefonos -->
+                <div>
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="tel" name="telefono" id="floating_telefono"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_telefono"
+                            class="peer-focus:font-medium absolute text-xs text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
+                    </div>
+
+
+
+                </div>
+                <!-- /telefono -->
+                <!-- telefonos de emergencia -->
+                <div>
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="tel" name="telefono-emergencia" id="floating_emergencia"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_emergencia"
+                            class="peer-focus:font-medium absolute text-xs text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono
+                            de emergencia</label>
+                    </div>
+
+                </div>
+                <!-- /telefono de emergencia -->
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- /cuarto formulario -->
+
+        <!-- quinto formulario -->
+        <h1 class="text-center text-3xl">Crear su Matrícula</h1>
+        <div class="container px-6 md:px-12 mx-auto mt-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2">
+                <!-- matricula -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pr-4">
+                        <input type="text" name="matricula" id="floating_matricula1"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_matricula1"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Matrícula</label>
+                    </div>
+
+                </div>
+                <!-- /matricula -->
+                <!-- password -->
+                <div class="">
+
+                    <div class="relative z-0 w-full mb-6 group md:pl-2">
+                        <input type="password" name="password" id="floating_password"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="floating_password"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contraseña</label>
+                    </div>
+
+                </div>
+                <!-- fin password -->
+            </div>
+        </div>
+        <!-- fin del quinto formulario -->
+        <!-- carrera -->
+
+        <div style="text-align: center;">
+            <label for="carrera"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-center">Seleccione la
+                Carrera</label>
+            {{form.nombre}}
+        </div>
+
+
+        <div class="mt-5" style="margin-left: 5%; margin-top: 60px;">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-center" for="user_avatar">Upload file
+                {{imagenform.avatar}}
+            </label>
+        </div>
+        <div class="mt-1 text-xs text-gray-500 dark:text-gray-300 text-center mb-10" id="user_avatar_help">Una foto de perfil sera util para saber que te has logeado</div>
+
+        
+        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-6 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-20" type="submit">enviar</button>
+    </form>
+  
+    <!-- script del segundo formulario -->
+    <script>
+        // este script oculta el formulario de datos militares el primero que esta comentado lo oculta pero no hace scroll el segundo que estoy utilizando tiene el scrollIntoView que permite que se mueva hacia abajo 
+        document.getElementById('id_militar').addEventListener('click', function (e) {
+            var formulario2 = document.getElementById('formulario2');
+            console.log(e.target.checked)
+            if (e.target.checked) {
+                formulario2.style.display = 'block';
+                formulario2.scrollIntoView({ behavior: "smooth" });
+            } else {
+                formulario2.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
 </html>

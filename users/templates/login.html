@@ -1,12 +1,12 @@
 {% load static %}
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href=" {% static 'css/estiles.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/estiles.css' %} ">
 </head>
 <body style="background-color:#002d62">
     <img style="margin-left: 35%; width: 520px; margin-top:55px;" src="{% static 'images/logo.png' %} " alt="">
@@ -56,4 +56,97 @@
     </div>
     
 </body>
-</html>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+<style>
+.custom-shape-divider-bottom-1699538527 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1699538527 svg {
+    position: relative;
+    display: block;
+    width: calc(125% + 1.3px);
+    height: 239px;
+}
+
+.custom-shape-divider-bottom-1699538527 .shape-fill {
+    fill: rgb(30 58 138);;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1699538527 svg {
+        width: calc(127% + 1.3px);
+        height: 73px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+</style>
+
+
+</head>
+<body class="h-screen overflow-hidden">
+  <div class="mt-10 mb-4 flex items-center justify-center">
+<img src="{% static 'images/logo.png' %}" alt="" srcset="">
+</div>
+<h3 class="text-center mb-3 text-sm md:text-lg lg:text-2xl">Escuelas de Graduados de Comando y Estado mayor</h3>
+<div style="text-align: center; color: red;">{{error}}</div>
+
+<div class="w-11/12 mx-auto md:w-1/2 lg:w-1/2 bg-blue-900 md:rounded-lg" style="border-radius: 30px;">
+    <div class="pt-4 pb-4 text-center text-white text-sm sm:text-md md:text-lg lg:text-xl">Escuelas
+       
+<form  method="POST">{% csrf_token %}
+    <div class="p-2 sm:p-4 md:px-4 flex justify-center">
+      <input type="text" id="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Matrícula" required>
+    </div>
+    <div class="p-2 sm:p-4 md:px-4 flex justify-center">
+      <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contraseña" required>
+    </div>
+    <div class="flex items-start mb-6">
+      <div class="flex items-center h-5 ml-10 md:ml-16">
+        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800">
+      </div>
+      <label for="remember" class="ml-2 text-sm font-medium text-white dark:text-gray-300">Remember me</label>
+    </div>
+    <button type="submit" class="text-blue-700 bg-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-100 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="border-radius: 30px;">Continuar</button>
+    <p class="text-xs py-2">Olvidaste tu Contraseña haz <a href="#" class="underline decoration-sky-500">aquí</a></p>
+  </form>
+    </div>
+</div>
+<!-- Esta es la ola que va al fondo, lo saque de una pagina de internet https://www.shapedivider.app -->
+ <div>
+    <div class="custom-shape-divider-bottom-1699538527">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+</div>
+</body>
+</html> 

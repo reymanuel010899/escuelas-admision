@@ -56,7 +56,7 @@ class EstudiantesModels(models.Model):
         
         
     def __str__(self):
-        return self.user.username  
+        return self.user.username
     
 class ProfesoresModels(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, related_name='profesor_user_reverce', on_delete=models.CASCADE)
@@ -183,26 +183,26 @@ class DatosPersonales(models.Model):
     siglas_escuela=models.CharField(max_length=75, blank=True, null=True)
     promocion=models.CharField(max_length=75, blank=True, null=True)
     matricula=models.CharField(max_length=20)
-    fecha_nacimiento = models.DateField()
-    lugar_nacimiento = models.CharField(max_length=100) 
-    nacionalidad = models.CharField(max_length=20)
-    provincia=models.CharField(max_length=50)
-    municipio=models.CharField(max_length=50)
-    Secion=models.CharField(max_length=35)
-    estado_civil=models.CharField(max_length=20, choices=ESTADO_CIVIL)
-    no_cedula=models.CharField(max_length=15)
+    fecha_nacimiento = models.DateField(blank=True,  null=True)
+    lugar_nacimiento = models.CharField(max_length=100, blank=True, null=True) 
+    nacionalidad = models.CharField(max_length=20, blank=True, null=True)
+    provincia=models.CharField(max_length=50, blank=True, null=True)
+    municipio=models.CharField(max_length=50, blank=True, null=True)
+    Secion=models.CharField(max_length=35, blank=True, null=True)
+    estado_civil=models.CharField(max_length=20, choices=ESTADO_CIVIL, blank=True, null=True)
+    no_cedula=models.CharField(max_length=15, blank=True, null=True)
     telefono_res=models.CharField(max_length=20, blank=True, null=True)
-    direcion=models.CharField(max_length=150)
-    celular=models.CharField(max_length=20)
+    direcion=models.CharField(max_length=150, blank=True, null=True)
+    celular=models.CharField(max_length=20, blank=True, null=True)
     telefono_ofic=models.CharField(max_length=20, blank=True, null=True)
-    lugar_trabajo=models.CharField(max_length=75)
-    alguna_discapasidad=models.CharField(max_length=20)
-    tipo_sangre=models.CharField(max_length=25)
-    funcion_desenpeña=models.CharField(max_length=100)
-    correo=models.EmailField()
-    alergico=models.CharField(max_length=50)
-    sexo = models.CharField(max_length=20, choices=GENDER)
-    militar=models.BooleanField(default=True)
+    lugar_trabajo=models.CharField(max_length=75, blank=True, null=True)
+    alguna_discapasidad=models.CharField(max_length=20, blank=True, null=True)
+    tipo_sangre=models.CharField(max_length=25, blank=True, null=True)
+    funcion_desenpeña=models.CharField(max_length=100, blank=True, null=True)
+    correo=models.EmailField(blank=True, null=True)
+    alergico=models.CharField(max_length=50, blank=True, null=True)
+    sexo = models.CharField(max_length=20, choices=GENDER, blank=True, null=True)
+    militar=models.BooleanField(default=False, blank=True, null=True)
     
     class Meta:
         verbose_name = "Datos Personale"
@@ -219,8 +219,8 @@ class DatosSiEsMilitar(models.Model):
     estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="Datos_militar_reverce", on_delete=models.CASCADE)
     rango=models.CharField(max_length=35, blank=True, null=True)
     institucion=models.CharField(max_length=50, blank=True, null=True)
-    fecha_ingreso=models.DateField()
-    ultimo_asenso=models.DateField()
+    fecha_ingreso=models.DateField(blank=True, null=True)
+    ultimo_asenso=models.DateField(blank=True, null=True)
     nombre_liceo=models.CharField(max_length=45)
     sector_educativo=models.CharField(max_length=10, choices=SECTOR_EDUCATIVO)
     idiomas_dominas=models.CharField(max_length=10, choices=IDIOMAS)

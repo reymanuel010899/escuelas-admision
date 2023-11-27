@@ -24,6 +24,7 @@ def login_views(request, pk):
         password = request.POST.get('password')
         
         user = authenticate(request, username=username, password=password)
+        print(username, password)
         
         if user:
             if user.is_registro:
@@ -62,7 +63,7 @@ def registrar_alunnos(request, pk):
     if request.method == 'POST':
         username = request.POST.get('matricula')
         gmail = request.POST.get('correo')
-        password = request.POST.get('Password')
+        password = request.POST.get('password')
         curso = request.POST.get('nombre')
         perfil = request.FILES.get('foto')
         nombres = request.POST.get('nombres')
@@ -71,7 +72,7 @@ def registrar_alunnos(request, pk):
         ubication = request.POST.get('direcion')
         rango = request.POST.get('rango','')
         cedula = request.POST.get('cedula')
-        
+
         user = User.objects.create_superuser(username, gmail, password)
         user.nombre = nombres
         user.apellido = apellido
@@ -99,5 +100,6 @@ def registrar_alunnos(request, pk):
         return redirect('/')  
     
     return render(request, 'registrar-alunnos.html', {"form":form_carreras, "registro":RegistrosForm, 'historialeducatifoform':HistorialEducativoForm, 'personales':DatosPersonalesForm, 'imagenform':AvatarFormUser})
+
 
 

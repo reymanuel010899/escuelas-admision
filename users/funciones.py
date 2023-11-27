@@ -5,7 +5,9 @@ from .models import DatosPersonales, DatosSiEsMilitar, DatosFamiliares, Historia
 def  definir_militar(form_is_militar):
     if form_is_militar.is_valid():
         activo_o_no = form_is_militar.cleaned_data['militar']
-        return activo_o_no
+        if activo_o_no:
+            return True
+        return False
     return False
 
 def buscar_sector(form_sector):
@@ -17,9 +19,7 @@ def buscar_sector(form_sector):
 def guardar_historial(form_historia):
     if form_historia.is_valid():
         form_historia.save()
-        print(form_historia)
-        # return form_historia
- 
+      
 
 
 def registrar_datos(request, estudiante, form_is_militar, form_sector, form_historia):
@@ -46,29 +46,38 @@ def registrar_datos(request, estudiante, form_is_militar, form_sector, form_hist
     correo = request.POST.get('correo','')
     alergico = request.POST.get('alergico','')
     militar_o_no = definir_militar(form_is_militar)
-
-   
-    DatosPersonales.objects.create(estudiante=estudiante,
+  
+    DatosPersonales.objects.create(
+                                    estudiante=estudiante,
                                     siglas_escuela=siglas_escuela,
-                                    promocion=promocion, matricula=matricula, 
-                                    fecha_nacimiento=fecha_nacimiento, lugar_nacimiento=lugar_nacimiento, 
-                                    nacionalidad=nacionalidad, provincia=provincia, 
-                                    municipio=municipio, Secion=secion,
-                                    estado_civil=estado_civil, no_cedula=cedula,
-                                    telefono_res=telefono_res,direcion=direcion,
-                                    celular=celular, telefono_ofic=telefono_ofi,
+                                    promocion=promocion,
+                                    matricula=matricula, 
+                                    fecha_nacimiento=fecha_nacimiento,
+                                    lugar_nacimiento=lugar_nacimiento, 
+                                    nacionalidad=nacionalidad,
+                                    provincia=provincia, 
+                                    municipio=municipio,
+                                    Secion=secion,
+                                    estado_civil=estado_civil,
+                                    no_cedula=cedula,
+                                    telefono_res=telefono_res,
+                                    direcion=direcion,
+                                    celular=celular,
+                                    telefono_ofic=telefono_ofi,
                                     lugar_trabajo=lugar_trabajo,
                                     alguna_discapasidad=discapasidad,
-                                    tipo_sangre=sangre, funcion_desenpeña=funcion_desenpeña,
-                                    correo=correo, alergico=alergico, sexo=sexo, militar=militar_o_no)
+                                    tipo_sangre=sangre, 
+                                    funcion_desenpeña=funcion_desenpeña,
+                                    correo=correo, 
+                                    alergico=alergico,
+                                    sexo=sexo,
+                                    militar=militar_o_no)
     
     if militar_o_no:
         rango = request.POST.get('rango','')
         institucion = request.POST.get('institucion','')
         fecha_ingreso = request.POST.get('fecha-ingreso','')
-        print(fecha_ingreso)
         ultimo_ascenso = request.POST.get('ultimo-ascenso','')
-        print(ultimo_ascenso)
         nombre_educativo = request.POST.get('nombre-educativo','')
         idiomas = request.POST.get('idiomas','')
         sector_educativo = buscar_sector(form_sector)
@@ -107,4 +116,4 @@ def registrar_datos(request, estudiante, form_is_militar, form_sector, form_hist
                                               institucion_escuelas=institucion_escuela,
                                               lugar=lugar, finalizacion=finalizacion, grado=grado )
             return redirect('/')
-        print('no es valido')
+        

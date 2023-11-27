@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,5 +39,76 @@
             </div>		
         </div>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: { 
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+
+<style>
+  .custom-shape-divider-bottom-1699538527 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+  }
+  
+  .custom-shape-divider-bottom-1699538527 svg {
+      position: relative;
+      display: block;
+      width: calc(125% + 1.3px);
+      height: 239px;
+  }
+  
+  .custom-shape-divider-bottom-1699538527 .shape-fill {
+      fill: rgb(30 58 138);;
+  }
+  
+  /** For mobile devices **/
+  @media (max-width: 767px) {
+      .custom-shape-divider-bottom-1699538527 svg {
+          width: calc(127% + 1.3px);
+          height: 73px;
+      }
+  }
+  </style>
+</head>
+<body class="h-screen overflow-hidden">
+  <div class="mt-10 mb-10 flex items-center justify-center">
+<img src="{% static 'images/logo.png' %} " alt="" srcset="">
+</div>
+<!-- <h3 class="text-center">Escuelas de Graduados de Comando y Estado mayor</h3> -->
+<div class="w-11/12 mx-auto md:w-1/2 lg:w-1/2 bg-blue-900 md:rounded-lg" style="border-radius: 25px;">
+    <div class="pt-4 pb-4 text-center text-white text-3xl flex flex-col">Escuelas
+        {% for escuela in escuelas  %}
+        <a  href="{% url 'users_app:login' escuela.pk  %}" class="py-4 px-2 mt-4 mr-6 ml-6 mb-4 lg:mr-16 lg:ml-16 text-base md:text-xs lg:text-base font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 underline">{{escuela.nombre}} </a>
+        {% endfor  %}
+    </div>
+</div>
+<div>
+  <div class="custom-shape-divider-bottom-1699538527">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+  </div>
 </body>
 </html>
