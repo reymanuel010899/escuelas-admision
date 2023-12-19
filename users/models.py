@@ -156,6 +156,7 @@ class CarrerasModels(models.Model):
     
 class EscuelasModels(models.Model):
     nombre = models.CharField(max_length=80)
+    admin = models.ForeignKey(User, blank=True, null=True,  related_name='user_reverce_admin', on_delete=models.CASCADE)
     director = models.ForeignKey(DirectorModels, blank=True, null=True, related_name='director_reverce', on_delete=models.CASCADE)
     estudiantes = models.ManyToManyField(EstudiantesModels, blank=True,  related_name='estudiantes_reverce')
     profesores = models.ManyToManyField(ProfesoresModels, blank=True, related_name='profesores_reverce')
