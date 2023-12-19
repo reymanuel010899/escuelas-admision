@@ -1,12 +1,163 @@
-{% extends "base.html" %}
-{% block content %}
-{% if escuela.escuela.portada %}
-<img style="width: 80%; margin-left: 10%; height: 50%; border-radius: 10PX;" src= "{{escuela.escuela.portada.url}} " alt="">
-  <div style="margin-left: 10%;">
-    <span> <span style="color: blue;"> DIRECTOR:</span> {{escuela.escuela.director.user.nombre }}  {{escuela.escuela.director.user.apellido }}</span>
-  </div>
-<div class="container" style="margin-top: 5%;">
-  <h5>{{escuela.escuela.descripcion|title}}</h5>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: { 
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+            <style>
+             
+                </style>
+                
+</head>
+<body class="h-screen overflow-y-auto">
+<!-- drawer init and toggle -->
+<div class="text-center mt-6 lg:mr-6 flex justify-center lg:justify-end">
+    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+    Menú
+    </button>
+ </div>
+ 
+ <!-- drawer component -->
+ <div id="drawer-example" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-blue-900 w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label">
+    <div class="flex justify-center">
+        <img class="w-20 h-20 mt-4 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="{{user.avatar.url}}" alt="Bordered avatar">
+    </div>
+    <h1 class="text-2xl font-bold mt-3 text-white text-center">{{user.nombre}}</h1>
+            <h1 class="text-2xl text-white text-center">{{user.username}}</h1>
+    <!-- <h5 id="drawer-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+   </svg>Info</h5> -->
+    <button type="button" data-drawer-hide="drawer-example" aria-controls="drawer-example" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
+       <svg class="w-3 h-3" aria-hidden="true" xmlns="{{user.avatar.url}}" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+       </svg>
+       <span class="sr-only">Close menu</span>
+    </button>
+       
+    <!-- nav menu -->
+<nav>
+                <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="/inicio/home/">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                      </svg>
+                    <span class="mx-4 font-medium text-xs">Información Perosonal</span>
+                </a>
+                <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="{% url 'inicio_app:avances-academicos' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                      </svg>
+                    <span class="mx-4 font-medium text-xs">Avances académicos</span>
+                </a>
+
+                <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="{{escuela.carrera.pemsum.url}} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                      </svg>
+                    <span class="mx-4 font-medium text-xs">Pensum académico</span>
+                </a>
+
+                <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="{% url 'inicio_app:actualizar-datos' %} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                      </svg>
+                      
+                    <span class="mx-4 font-medium text-xs">Actualizar Datos</span>
+                </a>
+
+                <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="{% url 'inicio_app:correo-cemtro' %} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                      </svg>
+                      
+                      
+                    <span class="mx-4 font-medium text-xs">Sobre Escuela</span>
+                </a>
+
+                <a id="miElemento" class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-lg" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                      </svg>
+                      
+                      
+                    <span class="mx-4 font-medium text-xs">Salir</span>
+                </a>
+            </nav>
 </div>
-{% endif %}
-{% endblock content %}
+    <!-- /nav menu -->
+<div class="flex justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+      </svg>
+      </div>
+
+      <h1 class="text-3xl text-center my-4 animate__animated animate__bounceInUp animate__delay-1s">Sobre la Escuela</h1>
+      <div class="flex justify-center">
+<img src="https://images.pexels.com/photos/2781814/pexels-photo-2781814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-2/6 rounded-lg shadow-xl hover:shadow-inner animate__animated animate__backInUp animate__delay-2s" alt="">
+</div>
+<div class="mx-20 text-justify mt-10 animate__animated animate__bounceInUp animate__delay-3s">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas mi nec metus malesuada, non ultricies lorem convallis. Sed placerat, sem id consectetur ultrices, mauris nunc lacinia turpis, vel accumsan mauris neque ac est. In dictum augue a maximus lobortis. Donec vulputate dolor ut leo placerat, sed vehicula felis luctus. Fusce felis magna, pretium non dui consequat, ultricies laoreet justo. Etiam varius magna non neque mollis porttitor a eu lectus. Vivamus eleifend massa eu eros tincidunt, non efficitur lorem rhoncus. Phasellus sit amet ligula luctus, facilisis erat a, lobortis lorem. Cras sagittis dui id lacus aliquam lacinia.
+</p>
+<br>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas mi nec metus malesuada, non ultricies lorem convallis. Sed placerat, sem id consectetur ultrices, mauris nunc lacinia turpis, vel accumsan mauris neque ac est. In dictum augue a maximus lobortis. Donec vulputate dolor ut leo placerat, sed vehicula felis luctus. Fusce felis magna, pretium non dui consequat, ultricies laoreet justo. Etiam varius magna non neque mollis porttitor a eu lectus. Vivamus eleifend massa eu eros tincidunt, non efficitur lorem rhoncus. Phasellus sit amet ligula luctus, facilisis erat a, lobortis lorem. Cras sagittis dui id lacus aliquam lacinia.
+    </p>
+
+</div>
+<!-- columnas de las fotos -->
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 animate__animated animate__flipInX animate__delay-3s">
+   <!-- foto 1 -->
+    <div class="flex justify-center">
+  <img src="https://images.pexels.com/photos/2781814/pexels-photo-2781814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-2/3 rounded-lg shadow-xl hover:shadow-inner" alt="">
+    </div>
+    <!-- fin foto 1 -->
+    <!-- foto 2 -->
+    <div class="flex justify-center">  
+      <img src="https://images.pexels.com/photos/2781814/pexels-photo-2781814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-2/3 rounded-lg shadow-xl hover:shadow-inner" alt="">
+    </div>
+    <!-- fin de foto 2 -->
+    <!-- foto 3 -->
+    <div class="flex justify-center">
+        <img src="https://images.pexels.com/photos/2781814/pexels-photo-2781814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="w-2/3 rounded-lg shadow-xl hover:shadow-inner" alt="">
+      </div>
+    <!-- fin de foto 3 -->
+</div>
+
+<svg class="" width="100%" height="50%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" overflow="auto" shape-rendering="auto" fill="#ffffff">
+  <defs>
+   <path id="wavepath" d="M 0 2000 0 500 Q 138 430 276 500 t 276 0 276 0 276 0 276 0 276 0  v1000 z" />
+   <path id="motionpath" d="M -552 0 0 0" /> 
+  </defs>
+  <g >
+   <use xlink:href="#wavepath" y="125" fill="#1D4ED8">
+   <animateMotion
+    dur="5s"
+    repeatCount="indefinite">
+    <mpath xlink:href="#motionpath" />
+   </animateMotion>
+   </use>
+  </g>
+</svg>
+
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+</body>
+</html>

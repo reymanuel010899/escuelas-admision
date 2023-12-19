@@ -68,6 +68,10 @@ a:focus {
 #sidebar.active {
   margin-left: -250px;
 }
+#sidebar.verlo {
+  display: none;
+}
+
 
 #sidebar .sidebar-header {
   padding: 20px;
@@ -142,7 +146,9 @@ a.article:hover {
   background: #6d7fcc !important;
   color: #fff !important;
 }
-
+#sidebar.verlo {
+  margin-left: 20px;
+} 
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

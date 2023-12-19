@@ -209,7 +209,7 @@ class DatosPersonales(models.Model):
         verbose_name_plural = "Datos Personales"
         
     def __str__(self):
-        return "hola"
+        return self.matricula
     
     
 SECTOR_EDUCATIVO=(('P', 'PUBLICO'),('PR','PRIVADO'))
@@ -238,7 +238,7 @@ class DatosSiEsMilitar(models.Model):
     
 class HistorialEducativo(models.Model):
     estudiante = models.ForeignKey(EstudiantesModels, blank=True, related_name="historia_educativo_reverce", on_delete=models.CASCADE)
-    nivel_basico =models.CharField(max_length=50, blank=True, null=True)
+    nivel_basico = models.CharField(max_length=50, blank=True, null=True)
     institucion_escuelas_basico =models.CharField(max_length=50, blank=True, null=True)
     lugar_basico = models.CharField(max_length=50, blank=True, null=True)
     finalizacion_basico =models.DateField()

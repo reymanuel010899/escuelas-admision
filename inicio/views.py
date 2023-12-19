@@ -27,7 +27,6 @@ def avances_academicos(request):
       user = request.user
       estudiante = EstudiantesModels.objects.get(user=user)
       notas, promedio, id_semestre = Notamodels.objects.sacar_promedio(estudiante)
-      # materias = MateriasModels.objects.filter(materia_carreras_reverce__id=estudiante.carrera.id).order_by('created')
       prueba , otros = avances_matriz(estudiante)
    return render(request, 'avances-academicos.html', {'semestres':prueba, 'promedio':promedio, 'cantidad':otros })
 

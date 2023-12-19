@@ -1,126 +1,259 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
- <html lang="en">
-     <head> 
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-         <title>Document</title>
-        <link rel="stylesheet" href=" {% static 'css/styles-home.css' %}">
-       
-         </head>
-          <body> 
-            <div id="wrapper"> 
-            <div class="wrapper" style="display: flex;">
-             <!-- Sidebar  --> 
-             <nav id="sidebar" style=" background-color: #002d62; position: fixed; height: 100%; z-index: 3 !important;   "> 
-    
-                <div class="sidebar-header" style="background-color: #002d62;"> 
-                    <h5 style="text-align: center; margin-bottom: 15px;">{{user.nombre}} </h5>
-                        <img id="portada" style="border-radius: 15px; max-width: 100PX; margin-left: 25%;  max-height:10%; "  src="{{user.avatar.url}} "/>
-                     <h5 style="text-align: center; margin-top: 15px;">{{user.username}}</h5>
-                     </div> 
-                    <ul class="list-unstyled components">
-                        {% if user.is_profesor %}
-                        <li> <a href="{% url 'inicio_app:inicio' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                          </svg>Informacion Personal</a> </li> <li> 
-                        <li><a href="{% url 'inicio_app:ultima-secciones'  %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                          </svg>Registrar nota</a> </li> <li> 
-                        <li> <a href="{% url 'inicio_app:actualizar-datos' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                          </svg>Actualizar mis Datos</a> </li> <li> 
-                        <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank"><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-                          </svg>Pensum Academico</a></li><li></li>
-                        <li> <a href="{% url 'inicio_app:correo-cemtro' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-                            <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
-                          </svg>Acerca Escuela</a></li><li> 
-                        <li> <a href="{% url 'users_app:cerrar-seccion'  %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                          </svg>Salir</a></li><li> 
-                        {% else %}
-                            <li><i class="bi bi-box-arrow-in-right"></i> <a href="{% url 'inicio_app:inicio' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                              </svg>Informacion Personal</a> </li> <li> 
-                            <li> <a href="{% url 'inicio_app:avances-academicos' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                              </svg>Avances Academicos</a></li><li> 
-                             <!-- <li> <a href="{% url 'inicio_app:notas-alunno' %} ">Historial Academico</a></li><li>  -->
-                            <li><a href="{{escuela.carrera.pemsum.url}} "  target="_blank"><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-                                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-                              </svg>Pensum Academico</a></li><li>
-                            <li><a href="{% url 'inicio_app:actualizar-datos' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                              </svg>Actualizar mis Datos</a> </li> <li> 
-                            <li><i class="bi bi-box-arrow-in-right"></i><a href="{% url 'inicio_app:correo-cemtro' %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-                                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
-                              </svg>Acerca Escuela</a></li><li> 
-                               
-                            <li><a  href="{% url 'users_app:cerrar-seccion'  %} "><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                              </svg>Salir</a></li><li> 
-                        {% endif %}
-                    </ul>
-                </nav>
-                
-                <!-- Page Content  -->
-                 <div id="content">
-                  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 1; width: 100%; background-color: rgb(222, 46, 46);border-radius: 5px;">
-                    <div class="container-fluid" style="text-align: center;display: flex;">
-                       <span>
-                           <button style="background-color: #d4d3dc; display: inline-block;" type="button" id="sidebarCollapse" class="btn btn-info">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                               </svg>
-                           </button>
-                       </span>
-                       <span style=" display: flex; justify-content: center; margin: auto;"><h2 style="align-self:center;">{{escuela.escuela.nombre|title}}</h2></span>
-                    
-                   </div> 
-                </nav>
-                   
-             
-                             
-                             
-                             
-                             {% block content %}
-                             
-                             
-                             {% endblock content %} 
-                            
-                            
-                            
-                        
-                </div>     
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <title>Document</title>
+  <link rel="stylesheet" href=" {% static 'css/styles-home.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="wrapper" id="drawer-example">
+    <div class="wrapper" id="drawer-example" style="display: flex;">
+      <!-- Sidebar  -->
+      <nav id="sidebar" style="background-color: #1e3a8a; position: fixed; height: 100%;; z-index: 3 !important;">
+        <button type="button" id="close-menu" data-drawer-hide="drawer-example" aria-controls="drawer-example"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close menu</span>
+        </button>
+        <div class="sidebar-header" style="background-color: #1e3a8a;">
+          <img class="w-20 h-20 mt-4 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+            style="max-width: 100PX; margin-left: 25%;  max-height:10%; " src="{{user.avatar.url}}"
+            alt="Bordered avatar">
+          <h1 class="text-2xl font-bold mt-3 text-white text-center" style="text-align: center;">{{user.nombre}}</h1>
+          <h1 class="text-2xl text-white text-center" style="text-align: center;">{{user.username}}</h1>
+
+
+        </div>
+        <ul class="list-unstyled components">
+          {% if user.is_profesor %}
+          <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l"
+            href="{% url 'inicio_app:inicio' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Información Perosonal</span>
+          </a>
+          <a href="{% url 'inicio_app:ultima-secciones'  %} " id="miElemento"
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path
+                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+              >
+            </svg>
+            <span class="mx-4 font-medium text-xs">Registrar nota</span>
+          </a>
+
+          <a href="{% url 'inicio_app:actualizar-datos' %} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Actualizar Datos</span>
+          </a>
+          <a href="{{escuela.carrera.pemsum.url}} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l"
+            target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Pensum académico</span>
+          </a>
+          <a href="{% url 'inicio_app:correo-cemtro' %} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Sobre Escuela</span>
+          </a>
+          <a href="{% url 'users_app:cerrar-seccion'  %} " id="miElemento"
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Salir</span>
+          </a>
+          {% else %}
+          <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l"
+            href="/inicio/home/">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Información Perosonal</span>
+          </a>
+          <a href="{% url 'inicio_app:avances-academicos' %} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Avances académicos</span>
+          </a>
+          <a href="{{escuela.carrera.pemsum.url}} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l"
+            target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Pensum académico</span>
+          </a>
+          <a href="{% url 'inicio_app:actualizar-datos' %} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Actualizar Datos</span>
+          </a>
+          <a href="{% url 'inicio_app:correo-cemtro' %} "
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Sobre Escuela</span>
+          </a>
+          <a href="{% url 'users_app:cerrar-seccion'  %} " id="miElemento"
+            class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9">
+              </path>
+            </svg>
+            <span class="mx-4 font-medium text-xs">Salir</span>
+          </a>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- Page Content  -->
+      <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button id="sidebarCollapse"
+            style="background-color: #173380; bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 display: inline-block; margin-left: 95%;"
+            type="button" class="btn btn-primary">
+
+            Menu
+          </button>
+        </nav>
+        {% block content %}
+
+
+        {% endblock content %}
+
+      </div>
 </body>
-        <script src="https://kit.fontawesome.com/62ea397d3a.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">   </script> 
-        <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>    
-        <Script>
-            let content = document.getElementById("content")
-            content.style.marginLeft = "250PX"
-            $(document).ready(function(){ $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); }); }); 
-            document.querySelector("#sidebarCollapse").addEventListener("click", (even)=>{
-              let content = document.getElementById("content")
-              let sidebar = document.querySelector("#sidebar")
-              if (sidebar.classList.contains("active")){
-                content.style.marginLeft = "250PX"
-              }else{
-                content.style.marginLeft = "0PX"
-              }
-             
-             
 
 
-            })
-        </Script> 
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+<script src="https://kit.fontawesome.com/62ea397d3a.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">   </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<Script>
+  let content = document.getElementById("content")
+  let sidebar = document.querySelector("#sidebar")
+  content.style.marginLeft = "250PX"
+
+  $(document).ready(function () { $('#sidebarCollapse').on('click', function () { $('#sidebar').toggleClass('active'); }); });
+  $(document).ready(function () { $('#close-menu').on('click', function () { $('#sidebar').toggleClass('active'); }); });
+
+  document.querySelector("#sidebarCollapse").addEventListener("click", (even) => {
+    let content = document.getElementById("content")
+
+    if (sidebar.classList.contains("active")) {
+      content.style.marginLeft = "250PX"
+
+    } else {
+      content.style.marginLeft = "0PX"
+    }
+  })
+  document.querySelector("#close-menu").addEventListener("click", (even) => {
+    let content = document.getElementById("content")
+
+    if (sidebar.classList.contains("active")) {
+      content.style.marginLeft = "250PX"
+
+    } else {
+      content.style.marginLeft = "0PX"
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+</Script>
+
 </html>

@@ -103,3 +103,5 @@ def registrar_alunnos(request, pk):
 
 
 
+def principal_view(request):
+    return render(request, "principal.html")
