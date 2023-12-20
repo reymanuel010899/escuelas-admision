@@ -203,7 +203,7 @@ class DatosPersonales(models.Model):
     correo=models.EmailField(blank=True, null=True)
     alergico=models.CharField(max_length=50, blank=True, null=True)
     sexo = models.CharField(max_length=20, choices=GENDER, blank=True, null=True)
-    militar=models.BooleanField(default=False, blank=True, null=True)
+    militar=models.BooleanField(default=False)
     
     class Meta:
         verbose_name = "Datos Personale"
