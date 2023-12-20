@@ -620,17 +620,15 @@
                 <!-- fin eres alergico -->
                 <!-- militar -->
                 <div class="relative z-0 w-full mb-6 group md:pr-4">
-                    <label for="Militar"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">¿Eres
-                        Militar?</label>
-                    <select id="militar"
+                    <label for="Militar" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">¿EresMilitar?</label>
+                    <div id="militar" style="padding: 10px;"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         required>
-                        <option value="" disabled>Selecciona una opción</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                       
-                    </select>
+                        
+                        {{personales.militar}}
+                        
+                        
+                </div>
                 </div>
 
                 <!-- fin militar -->
@@ -767,7 +765,7 @@
         <!-- fin del siguiente formulario 2 -->
 
           <!-- inicio de la tabla -->
-          <h1 class="text-center text-3xl my-6">Historial Educativo</h1>
+          <h1 class="text-center text-3xl my-6" >Historial Educativo</h1>
           <div class="flex flex-col">
               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
