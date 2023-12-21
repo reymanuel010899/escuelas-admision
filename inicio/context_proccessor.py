@@ -3,15 +3,15 @@ from users.models import EscuelasModels, CarrerasModels, DatosPersonales, Estudi
 def context_user(request):
     if request.user.is_authenticated:
         user = request.user
-        curso = EstudiantesModels.objects.filter(user=user).first()
-        personales = DatosPersonales.objects.filter(estudiante=curso).first()
-        # datos_militare = DatosSiEsMilitar.objects.filter(estudiante=curso).first()
+        estudiante = EstudiantesModels.objects.filter(user=user).first()
+        personales = DatosPersonales.objects.filter(estudiante=estudiante).first()
+        datos_militare = DatosSiEsMilitar.objects.filter(estudiante=estudiante).first()
     
         
         return {
-            'escuela':curso,
+            'escuela':estudiante,
             'personales':personales,
-            # 'datosmilitares':datos_militare
+            'datosmilitares':datos_militare 
         }
         
     else:
