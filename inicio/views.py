@@ -8,7 +8,7 @@ from django.views.generic import UpdateView
 from .form import RegistroNotaForm
 from django.urls import reverse_lazy
 from .funciones import sacar_seciones, avances_matriz, sumar_creditos, actualizar
-      
+from django.contrib import messages
 
 @login_required(login_url='users_app:escuelas')
 def home_views(request):
@@ -165,7 +165,8 @@ def seccines_ultimas(request):
    secion = SecionModels.objects.filter(materia__profesor__user=user).first()
    if secion:
       return redirect('inicio_app:seciones-alunnos', pk=secion.pk)
-   
+   messages.success(request, '¡este profesor no tiene secciones disponibles, por favor comunicarse con direccion !')
+   return redirect('inicio_app:inicio')
    
    
 

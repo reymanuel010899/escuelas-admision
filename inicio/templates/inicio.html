@@ -19,9 +19,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body class="mx-6 lg:mx-12">
+   
 
     <!-- drawer init and toggle -->
     <div class="text-center mt-6 lg:mr-6 flex justify-center lg:justify-end">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} style="color: rgb(255, 255, 255); padding: 18px; background-color: rgb(0, 174, 255); margin-top: 10px; border-radius: 5px; text-align: center; width: 100%;" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h1 class="text-2xl font-bold mt-3" style="margin-right: 25%;">{{escuela.escuela.nombre}}</h1>
         <button
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             type="button" data-drawer-target="drawer-example" data-drawer-show="drawer-example"
@@ -62,7 +71,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
-                <span class="mx-4 font-medium text-xs">Información Perosonal</span>
+                <span class="mx-4 font-medium text-xs">Información Personal</span>
             </a>
             <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l" href="{% url 'inicio_app:ultima-secciones'  %}">
                 <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -111,7 +120,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                 </svg>
-                <span class="mx-4 font-medium text-xs">Información Perosonal</span>
+                <span class="mx-4 font-medium text-xs">Información Personal</span>
             </a>
             <a class="flex items-center px-4 py-2 text-white border-b-2 border-white mt-6 hover:bg-slate-300 hover:text-gray-900 hover:rounded-l" href="{% url 'inicio_app:avances-academicos' %} ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

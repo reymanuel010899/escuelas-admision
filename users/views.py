@@ -24,7 +24,6 @@ def login_views(request, pk):
         password = request.POST.get('password')
         
         user = authenticate(request, username=username, password=password)
-        print(username, password)
         
         if user:
             if user.is_registro:
@@ -35,7 +34,12 @@ def login_views(request, pk):
                 else:
                     return render(request, 'login.html', {'error':'no perteneces a esta escuela'})  
            
-                
+            elif user.is_profesor:
+                escuela = EscuelasModels.objects.filter(id=pk).first()
+                if escuela.profesores.exists(user = user):
+                    login(request, user)
+                    return redirect('inicio_app:inicio')
+
             else:
                 escuela = EstudiantesModels.objects.filter(escuela__id=pk, user=user).first()
                 if escuela:
@@ -44,6 +48,11 @@ def login_views(request, pk):
                 else:
                     return render(request, 'login.html', {'error':'No perteneces a esta Escuela'})
         else:
+            profesor = User.objects.filter(username=username, password=password).first()
+            if profesor.is_profesor:
+                login(request, profesor)
+                return redirect('inicio_app:inicio')
+
             return render(request, 'login.html', {'error':'introduzca sus datos bien',})
                              
                 
