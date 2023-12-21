@@ -232,7 +232,7 @@ class DatosSiEsMilitar(models.Model):
         verbose_name_plural = "Datos Del Militar"
         
     def __str__(self):
-        return self.estudiante
+        return self.estudiante.user.username
     
     
     
@@ -280,5 +280,5 @@ class DatosFamiliares(models.Model):
         verbose_name_plural = "Datos De las familia"
         
     def __str__(self):
-        return self.estudiante
+        return self.estudiante.user.username
     
