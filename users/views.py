@@ -18,7 +18,8 @@ def escuelas_views(request):
 #login y redirectciones
 def login_views(request, pk):
     if request.method == 'GET':
-        return render(request, 'login.html')
+        escuela = EscuelasModels.objects.filter(id=pk).first()
+        return render(request, 'login.html', {'escuela':escuela.nombre})
     else:
         username = request.POST.get('username')
         password = request.POST.get('password')

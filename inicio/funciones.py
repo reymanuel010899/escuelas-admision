@@ -43,7 +43,8 @@ def avances_matriz(estudiante):
     cantidad = 0
     semestres = SemestreModels.objects.filter(carrera=estudiante.carrera).annotate(indice_semestral=Avg('materia__nota_reverce__nota', filter=Q(materia__nota_reverce__estudiate=estudiante)), creditos=Sum('materia__credito')).order_by('created')
     for sem in semestres:
-        cantidad += sem.creditos
+        if sem.creditos:
+            cantidad += sem.creditos
     return semestres, cantidad
 
       
